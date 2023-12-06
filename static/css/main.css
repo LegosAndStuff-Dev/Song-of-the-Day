@@ -1,0 +1,57 @@
+/*
+COLORS:
+    red: #E63946 rgb(230, 57, 70)
+    cream: #F1FAEE rgb(105, 5, 98)
+    light blue: #A8DADC rgb(168, 218, 220)
+    blue: #457B9D rgb(69, 123, 157)
+    dark blue: #1D3557 rgb(29, 53, 87)
+*/
+
+body {
+    background-color: #F1FAEE;
+    color: #E63946;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.main {
+    padding: 30px;
+}
+
+.container {
+    background-color: blue;
+    display: inline;
+    @media (max-width: 500px) {
+        background-color: #1D3557;
+      }
+      
+    flex-flow: row wrap;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #457B9D;
+    color: #F1FAEE;
+}
+  
+li {
+    color: #F1FAEE;
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: inherit;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+.active {
+    background-color: #1D3557;
+}
