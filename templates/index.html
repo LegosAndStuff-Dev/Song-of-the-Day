@@ -32,42 +32,43 @@
     <h1 style="text-align: center;">Song of the Day</h1>
 
     <!-- Main content -->
-    <div class="main container">
-        <!-- Search bar for songs -->
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for songs...">
-            <button onclick="searchSongs()">Search</button>
-            <img src="{{ url_for('static', filename='images/logo.png')}}" height="50" width="50">
-            <span class="material-symbols-outlined">
-            search
+    <!-- Search bar for songs -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for songs...">
+        <button onclick="searchSongs()">
+            <span class="material-symbols-outlined" style="color: #F1FAEE;">
+                search
             </span>
-        </div>
+        </button>
     </div>
 
-    <div class="content">
-        <div class="red">1</div>
-        <div class="green">2</div>
-        <div class="blue">3</div>
+    <!-- Testing area -->
+    <div class='parent flex-parent'>
+        <div class='child flex-child'>A</div>
+        <div class='child flex-child'>B</div>
       </div>
-
-      <!-- Song of the Day section -->
-      <section class="song-of-the-day">
-        <h2>Song of the Day</h2>
-        <!-- Display song details here -->
-        <p>Title: Song Title</p>
-        <p>Artist: Artist Name</p>
-        <img src="album_cover.jpg" alt="Album Cover">
-        <button onclick="addSong()">Add Song</button>
-      </section>
-
-      <!-- Past Song of the Day Archive -->
-      <section class="song-archive" id="archive">
-        <h2>Past Song of the Day Archive</h2>
-        <!-- Display past songs here -->
-        <ul id="pastSongs">
-          <!-- Sample past song -->
-          <li>Song Title - Artist (Date)</li>
-        </ul>
-      </section>
+    
+    <br>
+    <!-- Song of the Day section -->
+    <div class="song-of-the-day">
+      <h2>Song of the Day</h2>
+      <!-- Display song details here -->
+      <p>Title: Song Title</p>
+      <p>Artist: Artist Name</p>
+      <img src="album_cover.jpg" alt="Album Cover">
+      <button onclick="addSong()">Add Song</button>
+    </div>
 </body>
+<script>
+    // JavaScript functions for search and adding songs
+    function searchSongs() {
+        let x = document.getElementById("searchInput").value;
+        fetch('http://192.168.4.44:5000/hello/' + x) .then(response => response.json()) .then(data => console.log(data)) .catch(error => console.error(error)); 
+    }
+
+    function addSong() {
+      // Implement functionality to add a song
+      // This might open a form for user input or trigger an action to add the song
+    }
+</script>
 </html>

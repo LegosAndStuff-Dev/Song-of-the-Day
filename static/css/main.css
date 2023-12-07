@@ -16,19 +16,35 @@ body {
     width: 100%;
 }
 
+.search-bar {
+    text-align: center;
+}
+
 .main {
     padding: 30px;
 }
 
-.container {
-    background-color: blue;
-    display: inline;
-    @media (max-width: 500px) {
-        background-color: #1D3557;
-      }
-      
-    flex-flow: row wrap;
+.parent {
+    padding: 1rem;
 }
+
+.child {
+    margin: 10px;
+    border: 1px solid indigo;
+    padding: 1rem;
+}
+
+.flex-parent {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+
+
+
 
 ul {
     list-style-type: none;
@@ -38,12 +54,12 @@ ul {
     background-color: #457B9D;
     color: #F1FAEE;
 }
-  
+
 li {
     color: #F1FAEE;
     float: left;
 }
-  
+
 li a {
     display: block;
     color: inherit;
@@ -51,7 +67,39 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-  
+
 .active {
     background-color: #1D3557;
+}
+
+input[type="text"] {
+    padding: 10px;
+    background-color: #F1FAEE;
+    width: 30%;
+    height: 25.5px;
+    border-radius: 10px;
+    border: 2.5px solid #457B9D;
+}
+
+.search-bar button {
+    position: relative;
+    top: 7px;
+}
+
+button {
+    background-color: #457B9D;
+    border: 2.5px solid #457B9D;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .flex-parent {
+        display:block;
+    }
+    .search-bar input[type="text"] {
+        width: 50%;
+    }
 }
