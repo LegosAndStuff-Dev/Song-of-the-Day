@@ -44,7 +44,7 @@
 
     <!-- Testing area -->
     <div class='parent flex-parent'>
-        <div class='child flex-child'>A</div>
+        <div class='child flex-child' id="searchResults">A</div>
         <div class='child flex-child'>B</div>
       </div>
     
@@ -63,7 +63,13 @@
     // JavaScript functions for search and adding songs
     function searchSongs() {
         let x = document.getElementById("searchInput").value;
-        fetch('http://192.168.4.44:5000/hello/' + x) .then(response => response.json()) .then(data => console.log(data)) .catch(error => console.error(error)); 
+        console.log(document.getElementById("searchResults").textContent);
+        fetch('http://192.168.4.44:5000/hello/' + x) .then(response => response.json()) .then(data => {
+          document.getElementById("searchResults").textContent = data;
+          console.log(typeof(data["items"][0]["genres"]));
+          console.log(data["items"][0]["genres"][0])
+        }) .catch(error => console.error(error)); 
+
     }
 
     function addSong() {
