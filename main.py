@@ -5,10 +5,10 @@ app = Flask(__name__)
 api = Api(app)
 
 class HelloWorld(Resource):
-    def get(self):
-        return {"Hello World": "Hello"}
+    def get(self, search):
+        return {"Hello World": search}
     
-api.add_resource(HelloWorld, "/hello")
+api.add_resource(HelloWorld, "/hello/<string:search>")
 
 @app.route("/")
 @app.route("/home")
