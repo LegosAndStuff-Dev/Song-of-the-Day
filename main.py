@@ -5,6 +5,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 import os
+import json
 
 load_dotenv()
 
@@ -25,6 +26,11 @@ api = Api(app)
 class HelloWorld(Resource):
     def get(self, search):
         search = sp.search(q=search, type="track", limit=5)
+        json_object = json.dumps(search, indent=4)
+ 
+        # Writing to sample.json
+        with open("output.json", "w") as outfile:
+            outfile.write(json_object)
         return search
     
 api.add_resource(HelloWorld, "/search/<string:search>")
