@@ -42,9 +42,19 @@ body {
     flex: 1;
 }
 
+.item {
+    display: inline-flex;
+    padding: 12px 6px;
+    align-items: flex-start;
+    gap: 13px;
+}
 
-
-
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
 
 ul {
     list-style-type: none;

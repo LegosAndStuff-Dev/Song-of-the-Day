@@ -44,7 +44,20 @@
 
     <!-- Testing area -->
     <div class='parent flex-parent'>
-        <div class='child flex-child' id="searchResults">A</div>
+        <div class='child flex-child' id="searchResults">
+          <div class="item">
+            <div class="image">
+              <img src="https://i.scdn.co/image/ab67616d0000b27395ca6a9b4083a86c149934ae" width="100" height="100">
+            </div>
+            <div class="data">
+              <h3 style="font-size: 20px; margin: 0px;">Daylight</h3>
+              <p style="margin: 0px;">By: David Kushner</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M9.49999 0C4.25627 0 0 4.25627 0 9.5C0 14.7551 4.25627 19 9.49999 19C14.7551 19 19 14.7437 19 9.5C19.0113 4.25627 14.7551 0 9.49999 0ZM13.8584 13.7109C13.6882 13.9946 13.325 14.0741 13.0412 13.9038C10.8052 12.5418 8.00178 12.2354 4.68757 12.9845C4.36977 13.0526 4.05197 12.8596 3.98387 12.5418C3.91577 12.224 4.10872 11.9062 4.42652 11.8381C8.04718 11.0096 11.1571 11.3614 13.6541 12.8937C13.9492 13.0639 14.04 13.4271 13.8584 13.7109ZM15.0275 11.1231C14.8118 11.4749 14.3578 11.5771 14.006 11.3728C11.4522 9.7951 7.55913 9.3411 4.54002 10.2605C4.14277 10.374 3.73417 10.1583 3.62066 9.7724C3.50716 9.37515 3.72281 8.96655 4.12007 8.85305C7.57048 7.80884 11.8608 8.30824 14.8005 10.1129C15.1296 10.3172 15.2431 10.7712 15.0275 11.1231ZM15.1296 8.42174C12.0651 6.60574 7.01433 6.43548 4.08602 7.32079C3.62066 7.46834 3.12126 7.19594 2.97371 6.73059C2.82616 6.26523 3.09856 5.76583 3.56391 5.61828C6.92353 4.59677 12.5077 4.80108 16.0263 6.88949C16.4462 7.13919 16.5824 7.68399 16.3327 8.10394C16.0944 8.53525 15.5496 8.67145 15.1296 8.42174Z" fill="#E63946"/>
+              </svg>
+            </div>
+          </div>
+        </div>
         <div class='child flex-child'>B</div>
       </div>
     
@@ -67,7 +80,7 @@
         console.log(x)
         console.log(document.getElementById("searchResults").textContent);
         fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
-            //document.getElementById("searchResults").textContent = data;
+            document.getElementById("searchResults").textContent = null;
             name = data["tracks"]["items"][0]["name"];
             popularity = data["tracks"]["items"][0]["popularity"];
             duration = data["tracks"]["items"][0]["duration_ms"];
@@ -78,7 +91,11 @@
             document.getElementById("searchResults").textContent
 
             img = document.createElement('img');
-            img.src = image; img.height = 100; img.width = 100;
+            img.src = image; img.height = "100"; img.width = "100";
+
+            div = document.createElement("div");
+
+            //img.classList.add("img-test");
 
             document.getElementById('searchResults').appendChild(img);
         }) .catch(error => console.error(error)); 
