@@ -129,6 +129,7 @@ ENV/
 env.bak/
 venv.bak/
 .cache-*
+output.json
 
 # Spyder project settings
 .spyderproject
