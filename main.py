@@ -24,8 +24,8 @@ api = Api(app)
 
 class HelloWorld(Resource):
     def get(self, search):
-        top_artists = sp.current_user_top_artists(limit=5, time_range="medium_term")
-        return top_artists
+        search = sp.search(q=search, type="track", limit=5)
+        return search
     
 api.add_resource(HelloWorld, "/hello/<string:search>")
 
