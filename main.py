@@ -27,7 +27,7 @@ class HelloWorld(Resource):
         search = sp.search(q=search, type="track", limit=5)
         return search
     
-api.add_resource(HelloWorld, "/hello/<string:search>")
+api.add_resource(HelloWorld, "/search/<string:search>")
 
 @app.route("/")
 @app.route("/home")
