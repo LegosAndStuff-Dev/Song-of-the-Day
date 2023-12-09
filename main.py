@@ -25,7 +25,7 @@ api = Api(app)
 
 class HelloWorld(Resource):
     def get(self, search):
-        search = sp.search(q=search, type="track", limit=5)
+        search = sp.search(q=search, type="track", limit=6)
         json_object = json.dumps(search, indent=4)
  
         # Writing to sample.json
