@@ -76,6 +76,7 @@
     // JavaScript functions for search and adding songs
 
     function searchSongs() {
+        let x = document.getElementById("searchInput").value;
         fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
             document.getElementById("searchResults").textContent = "";
             console.log(data)
@@ -87,10 +88,14 @@
                 name = data["tracks"]["items"][i]["name"];
                 artist = data["tracks"]["items"][i]["artists"][0]["name"];
                 image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
+                track_id = data["tracks"]["items"][i]["id"];
+
+                console.log(track_id)
 
                 x = {"name": name,
                     "artist": artist,
-                    "art": image_pic}
+                    "art": image_pic,
+                    "id": track_id}
 
                 songData[i] = x
             }
@@ -99,6 +104,7 @@
                 name = songData[i]["name"]
                 artist= songData[i]["artist"]
                 image_pic = songData[i]["art"]
+                track_id = songData[i]["id"]
 
                 item = document.createElement("div");
                 item.id = "item" + i;
@@ -127,7 +133,11 @@
                 songBy = document.createElement("p");
                 songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
 
-                //when you click the icon it is suppose to bring you to the link on spotify that isn't implant yet"
+                //icon link click
+                icon_link = document.createElement("a")
+                icon_link.href = `https://open.spotify.com/track/${track_id}`;
+                icon_link.id = "iconlink" + i; icon_link.target = "_blank";
+
                 icon = document.createElement("img")
                 icon.src = "{{ url_for('static', filename='images/spotify_logo.png') }}"; icon.width = "19"; icon.height = "19";
 
@@ -139,7 +149,8 @@
 
                 document.getElementById("data" + i).appendChild(songName);
                 document.getElementById("data" + i).appendChild(songBy);
-                document.getElementById("data" + i).appendChild(icon);
+                document.getElementById("data" + i).appendChild(icon_link);
+                document.getElementById("iconlink" + i).appendChild(icon);
             }
         }) .catch(error => console.error(error)); 
     }
