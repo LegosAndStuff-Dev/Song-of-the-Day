@@ -107,6 +107,13 @@
             songName = document.createElement("h3");
             songName.textContent = name; songName.style = "font-size: 20px; margin: 0px;";
 
+            songBy = document.createElement("p");
+            songBy.textContent = "By: " + artist; songBy.style = "margin: 0px;"
+
+            icon = document.createElement("img")
+            icon.src = "{{ url_for('static', filename='images/spotify_logo.png') }}"; icon.width = "19"; icon.height = "19";
+            //{{ url_for('static', filename='images/logo.png')}}
+
             //making all the div tags
             document.getElementById("searchResults").appendChild(item);
             document.getElementById("item").appendChild(image);
@@ -116,7 +123,9 @@
             document.getElementById('image').appendChild(img);
 
             //adding song name to data tag
-            document.getElementById("data").appendChild(songName)
+            document.getElementById("data").appendChild(songName);
+            document.getElementById("data").appendChild(songBy);
+            document.getElementById("data").appendChild(icon);
         }) .catch(error => console.error(error)); 
     }
 
