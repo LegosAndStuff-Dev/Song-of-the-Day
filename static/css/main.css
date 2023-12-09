@@ -51,9 +51,10 @@ body {
 
 .data {
     display: flex;
+    padding: 0px 10px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
 }
 
 ul {
