@@ -82,53 +82,65 @@
         fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
             document.getElementById("searchResults").textContent = "";
             console.log(data)
-            for (let i = 0; i < 5; i++) {
+            i = 1
+
+            for (let i = 0; i < 5; i ++) {
                 console.log(i)
-            
-                name = data["tracks"]["items"][1]["name"];
-                popularity = data["tracks"]["items"][1]["popularity"];
-                duration = data["tracks"]["items"][1]["duration_ms"];
-                explicit = data["tracks"]["items"][1]["explicit"];
-                artist = data["tracks"]["items"][1]["artists"][0]["name"];
-                image_pic = data["tracks"]["items"][1]["album"]["images"][0]["url"];
+                name = data["tracks"]["items"][i]["name"];
+                popularity = data["tracks"]["items"][i]["popularity"];
+                duration = data["tracks"]["items"][i]["duration_ms"];
+                explicit = data["tracks"]["items"][i]["explicit"];
+                artist = data["tracks"]["items"][i]["artists"][0]["name"];
+                image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
 
-                item = document.createElement("div");
-                item.id = "item" + i;
-                item.classList.add("item")
+                let x = [name, popularity, duration, explicit, artist, image_pic]
 
-                image = document.createElement("div");
-                image.id = "image" + i;
-
-                data = document.createElement("div");
-                data.id = "data" + i;
-                data.classList.add("data")
-
-                img = document.createElement('img');
-                img.src = image_pic; img.height = "100"; img.width = "100";
-
-                songName = document.createElement("h3");
-                songName.textContent = name; songName.style = "font-size: 20px; margin: 0px;";
-
-                songBy = document.createElement("p");
-                songBy.textContent = "By: " + artist; songBy.style = "margin: 0px;"
-
-                icon = document.createElement("img")
-                icon.src = "{{ url_for('static', filename='images/spotify_logo.png') }}"; icon.width = "19"; icon.height = "19";
-                //{{ url_for('static', filename='images/logo.png')}}
-
-                //making all the div tags
-                document.getElementById("searchResults").appendChild(item);
-                document.getElementById("item" + i).appendChild(image);
-                document.getElementById("item" + i).appendChild(data);
-
-                //adding image to image div tag
-                document.getElementById('image' + i).appendChild(img);
-
-                //adding song name to data tag
-                document.getElementById("data" + i).appendChild(songName);
-                document.getElementById("data" + i).appendChild(songBy);
-                document.getElementById("data" + i).appendChild(icon);
+                console.log(x)
             }
+        
+            name = data["tracks"]["items"][1]["name"];
+            popularity = data["tracks"]["items"][1]["popularity"];
+            duration = data["tracks"]["items"][1]["duration_ms"];
+            explicit = data["tracks"]["items"][1]["explicit"];
+            artist = data["tracks"]["items"][1]["artists"][0]["name"];
+            image_pic = data["tracks"]["items"][1]["album"]["images"][0]["url"];
+
+            item = document.createElement("div");
+            item.id = "item" + i;
+            item.classList.add("item")
+
+            image = document.createElement("div");
+            image.id = "image" + i;
+
+            data = document.createElement("div");
+            data.id = "data" + i;
+            data.classList.add("data")
+
+            img = document.createElement('img');
+            img.src = image_pic; img.height = "100"; img.width = "100";
+
+            songName = document.createElement("h3");
+            songName.textContent = name; songName.style = "font-size: 20px; margin: 0px;";
+
+            songBy = document.createElement("p");
+            songBy.textContent = "By: " + artist; songBy.style = "margin: 0px;"
+
+            icon = document.createElement("img")
+            icon.src = "{{ url_for('static', filename='images/spotify_logo.png') }}"; icon.width = "19"; icon.height = "19";
+            //{{ url_for('static', filename='images/logo.png')}}
+
+            //making all the div tags
+            document.getElementById("searchResults").appendChild(item);
+            document.getElementById("item" + i).appendChild(image);
+            document.getElementById("item" + i).appendChild(data);
+
+            //adding image to image div tag
+            document.getElementById('image' + i).appendChild(img);
+
+            //adding song name to data tag
+            document.getElementById("data" + i).appendChild(songName);
+            document.getElementById("data" + i).appendChild(songBy);
+            document.getElementById("data" + i).appendChild(icon);
         }) .catch(error => console.error(error)); 
     }
 
