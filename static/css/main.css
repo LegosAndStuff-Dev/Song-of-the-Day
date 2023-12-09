@@ -57,6 +57,28 @@ body {
     gap: 5px;
 }
 
+.button-group {
+    display: flex;
+    height: 19px;
+    align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.button-group button {
+    display: flex;
+    width: 50px;
+    height: 19px;
+    padding: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #E63946;
+    margin: 0;
+    border: 0px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
