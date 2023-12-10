@@ -36,11 +36,12 @@ class serachSong(Resource):
 class detail(Resource):
     def get(self, id):
         print(id)
+        track = sp.track(id)
  
         # Writing to sample.json
         #with open("output.json", "w") as outfile:
         #    outfile.write(json_object)
-        #return search
+        return track
     
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
