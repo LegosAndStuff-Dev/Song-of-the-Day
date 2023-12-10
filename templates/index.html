@@ -151,8 +151,7 @@
                 button_group.classList.add("button-group"); button_group.id = "button-group" + i;
 
                 detail = document.createElement("button")
-                detail.id = "detail" + i;
-
+                detail.id = track_id;
                 //icon link click
                 icon_link = document.createElement("a")
                 icon_link.href = `https://open.spotify.com/track/${track_id}`;
@@ -178,14 +177,19 @@
                 document.getElementById("button-group" + i).appendChild(icon_link);
                 document.getElementById("iconlink" + i).appendChild(icon);
 
-                document.getElementById("button-group" + i).appendChild(detail);
-                document.getElementById("detail" + i).appendChild(button_art);
+                //document.getElementById("button-group" + i).appendChild(detail);
+
+                button_group.innerHTML += `<button id='${track_id}' onclick='openData(this.id)'></button>`;
+
+                document.getElementById(track_id).appendChild(button_art);
+
+                
             }
         }) .catch(error => console.error(error)); 
     }
 
-    function openData() {
-
+    function openData(clicked_id) {
+        console.log(clicked_id)
     }
 
     function addSong() {
