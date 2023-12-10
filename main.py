@@ -23,7 +23,7 @@ if token:
 app = Flask(__name__)
 api = Api(app)
 
-class HelloWorld(Resource):
+class serachSong(Resource):
     def get(self, search):
         search = sp.search(q=search, type="track", limit=6)
         json_object = json.dumps(search, indent=4)
@@ -33,7 +33,7 @@ class HelloWorld(Resource):
             outfile.write(json_object)
         return search
     
-api.add_resource(HelloWorld, "/search/<string:search>")
+api.add_resource(serachSong, "/search/<string:search>")
 
 @app.route("/")
 @app.route("/home")
