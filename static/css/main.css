@@ -128,6 +128,10 @@ button {
     border-radius: 10px;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
     .flex-parent {
         display:block;
