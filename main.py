@@ -33,7 +33,17 @@ class serachSong(Resource):
             outfile.write(json_object)
         return search
     
+class detail(Resource):
+    def get(self, id):
+        print(id)
+ 
+        # Writing to sample.json
+        #with open("output.json", "w") as outfile:
+        #    outfile.write(json_object)
+        #return search
+    
 api.add_resource(serachSong, "/search/<string:search>")
+api.add_resource(detail, "/detail/<string:id>")
 
 @app.route("/")
 @app.route("/home")
