@@ -40,6 +40,8 @@ class detail(Resource):
         songName = track["name"]
         album_type = track["album"]["album_type"]
         release = track["album"]["release_date"]
+        release = release.split("-")
+        release = f"{release[1]}-{release[2]}-{release[0]}"
         num_tracks = track["album"]["total_tracks"]
         dis_num = track["track_number"]
         popularity = track["popularity"]
