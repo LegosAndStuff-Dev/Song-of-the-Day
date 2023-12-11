@@ -37,11 +37,39 @@ class detail(Resource):
     def get(self, id):
         print(id)
         track = sp.track(id)
+        songName = track["name"]
+        album_type = track["album"]["album_type"]
+        release = track["album"]["release_date"]
+        num_tracks = track["album"]["total_tracks"]
+        dis_num = track["track_number"]
+        popularity = track["popularity"]
+        explicit = track["explicit"]
+
+        features = sp.audio_features(id)
+        features = features[0]
+        acousticness = features["acousticness"]
+        duration = features["duration_ms"] / 1000
+        time = f"{features['time_signature']}/4"
+        valence = features["valence"]
+
+        songDetail = {
+            "name": songName,
+            "album_type": album_type,
+            "release": release,
+            "num_tracks": num_tracks,
+            "dis_num": dis_num,
+            "popularity": popularity,
+            "explicit": explicit,
+            "acousticness": acousticness,
+            "duration": duration,
+            "time_signature": time,
+            "valence": valence
+        }
  
         # Writing to sample.json
         #with open("output.json", "w") as outfile:
         #    outfile.write(json_object)
-        return track
+        return songDetail
     
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
