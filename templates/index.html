@@ -48,7 +48,7 @@
             <!-- This is where each item goes for the song (6 items) -->
             <p style="text-align: center; position: relative;">Please Search for a Song</p>
         </div>
-        <div class='child flex-child'>
+        <div class='child flex-child' id="detail">
             <!-- This is where the addition detail of a song would go -->
             <p style="text-align: center; position: relative;">No Song Detail</p>
         </div>
@@ -173,6 +173,22 @@
         console.log(clicked_id)
         fetch('http://192.168.4.44:5000/detail/' + clicked_id) .then(response => response.json()) .then(data => {
             console.log(data);
+
+            //clearing current html in detail
+            document.getElementById("detail").textContent = ""
+
+            console.log(document.getElementById("detail"))
+
+            //top div
+            topInfo = document.createElement("div")
+            topInfo.id = "topInfo";
+            document.getElementById("detail").appendChild(topInfo);
+
+            image = document.createElement("img");
+            image.src = data["art"]; image.width = "100"; image.height = "100";
+            document.getElementById("topInfo").appendChild(image);
+
+            
                 
         }) .catch(error => console.error(error)); 
     }
