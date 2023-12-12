@@ -54,6 +54,7 @@ class detail(Resource):
         acousticness = features["acousticness"]
         duration = features["duration_ms"] / 1000
         time = f"{features['time_signature']}/4"
+        tempo = features["tempo"]
         valence = features["valence"]
 
         songDetail = {
@@ -69,6 +70,7 @@ class detail(Resource):
             "acousticness": acousticness,
             "duration": duration,
             "time_signature": time,
+            "tempo": tempo,
             "valence": valence
         }
  
