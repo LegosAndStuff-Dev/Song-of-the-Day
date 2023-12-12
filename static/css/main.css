@@ -84,6 +84,13 @@ body {
     align-items: flex-start;
 }
 
+.mainDetail {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+}
+
 .data2 {
     display: flex;
     padding: 0px 10px;
