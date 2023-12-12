@@ -182,12 +182,27 @@
             //top div
             topInfo = document.createElement("div")
             topInfo.id = "topInfo";
+            topInfo.classList.add("topInfo");
             document.getElementById("detail").appendChild(topInfo);
 
             image = document.createElement("img");
             image.src = data["art"]; image.width = "100"; image.height = "100";
             document.getElementById("topInfo").appendChild(image);
 
+            dataDetail = document.createElement("div");
+            dataDetail.id = "dataDetail";
+            dataDetail.classList.add("data2");
+            document.getElementById("topInfo").appendChild(dataDetail);
+
+            songName = document.createElement("h2");
+            songName.textContent = data["name"];
+            songName.style = `font-size: 32px; font-style: normal; font-weight: 700; line-height: normal; margin: 0px;`;
+            document.getElementById("dataDetail").appendChild(songName)
+
+            artist = document.createElement("p");
+            artist.textContent = data["artist"];
+            artist.style = `font-size: 15px; font-style: normal; font-weight: 700; line-height: normal; margin: 0px;`;
+            document.getElementById("dataDetail").appendChild(artist);
             
                 
         }) .catch(error => console.error(error)); 
