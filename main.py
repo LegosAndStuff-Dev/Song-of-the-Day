@@ -38,6 +38,7 @@ class detail(Resource):
         print(id)
         track = sp.track(id)
         songName = track["name"]
+        artist = track["artists"][0]["name"]
         album_type = track["album"]["album_type"]
         release = track["album"]["release_date"]
         release = release.split("-")
@@ -57,6 +58,7 @@ class detail(Resource):
 
         songDetail = {
             "name": songName,
+            "artist": artist,
             "art": art,
             "album_type": album_type,
             "release": release,
