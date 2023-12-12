@@ -43,6 +43,7 @@ class detail(Resource):
         release = release.split("-")
         release = f"{release[1]}-{release[2]}-{release[0]}"
         num_tracks = track["album"]["total_tracks"]
+        art = track["album"]["images"][0]["url"]
         dis_num = track["track_number"]
         popularity = track["popularity"]
         explicit = track["explicit"]
@@ -56,6 +57,7 @@ class detail(Resource):
 
         songDetail = {
             "name": songName,
+            "art": art,
             "album_type": album_type,
             "release": release,
             "num_tracks": num_tracks,
