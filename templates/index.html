@@ -203,6 +203,32 @@
             artist.textContent = data["artist"];
             artist.style = `font-size: 15px; font-style: normal; font-weight: 700; line-height: normal; margin: 0px;`;
             document.getElementById("dataDetail").appendChild(artist);
+
+            mainDetail = document.createElement("div");
+            mainDetail.classList.add("mainDetail");
+            mainDetail.id = "mainDetail";
+
+            mainDetail.innerHTML = `
+            <p>
+            Release Date: ${data["release"]}<br>
+            Album Type: ${data["album_type"]}<br>
+            Number of Songs: ${data["num_tracks"]}<br>
+            Disc Number: ${data["dis_num"]}<br>
+            Duration: ${data["duration"]}<br>
+            Explicit: ${data["explicit"]}<br>
+            Popularity: ${data["popularity"]}<br>
+            <br>
+            Acousticness: ${data["acousticness"]}<br>
+            Valence: ${data["valence"]}<br>
+            <br>
+            Tempo: ${data["tempo"]}<br>
+            Time Signature: ${data["time_signature"]}<br>
+            </p>
+            `;
+
+            document.getElementById("detail").appendChild(mainDetail);
+
+
             
                 
         }) .catch(error => console.error(error)); 
