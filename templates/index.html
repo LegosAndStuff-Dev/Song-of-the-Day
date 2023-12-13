@@ -27,6 +27,7 @@
         <li><img src="{{ url_for('static', filename='images/logo.png')}}" height="25" width="25" style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"></li>
         <li><a class="active" href="#home">Home</a></li>
         <li><a href="#archive">Archive</a></li>
+        <li><a href="#song">Add Song</a></li>
 
     </ul>
     <h1 style="text-align: center;">Song of the Day</h1>
@@ -35,7 +36,7 @@
     <!-- Search bar for songs -->
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Search for songs...">
-        <button onclick="searchSongs()">
+        <button onclick="searchSongs()" class="search">
             <span class="material-symbols-outlined" style="color: #F1FAEE;">
                 search
             </span>
@@ -53,19 +54,10 @@
             <p style="text-align: center; position: relative;">No Song Detail</p>
         </div>
     </div>
-      <span class="material-symbols-outlined">
-        arrow_forward
-        </span>
-    <br>
-    <!-- Song of the Day section -->
-    <div class="song-of-the-day">
-      <h2>Song of the Day</h2>
-      <!-- Display song details here -->
-      <p>Title: Song Title</p>
-      <p>Artist: Artist Name</p>
-      <img src="album_cover.jpg" alt="Album Cover">
-      <button onclick="addSong()">Add Song</button>
+    <div style="text-align: center;">
+        <button class="addSongButton">Add Song of the Day</button>
     </div>
+    <br>
 </body>
 <script>
     // JavaScript functions for search and adding songs
