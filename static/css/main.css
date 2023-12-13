@@ -75,6 +75,7 @@ body {
     align-items: center;
     gap: 10px;
     background-color: #E63946;
+    border-radius: 10px;
     margin: 0;
     border: 0px;
 }
