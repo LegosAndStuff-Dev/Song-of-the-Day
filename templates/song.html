@@ -14,7 +14,7 @@
     -->
     <!-- Add your CSS link here for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/song.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
     <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
     <style>
@@ -45,17 +45,10 @@
 
     <!-- Testing area -->
     <div class='parent flex-parent'>
-        <div class='child flex-child' id="searchResults">
+        <div class='child flex-child' id="searchResults" style="gap: 10px;">
             <!-- This is where each item goes for the song (6 items) -->
             <p style="text-align: center; position: relative;">Please Search for a Song</p>
         </div>
-        <div class='child flex-child' id="detail">
-            <!-- This is where the addition detail of a song would go -->
-            <p style="text-align: center; position: relative;">No Song Detail</p>
-        </div>
-    </div>
-    <div style="text-align: center;">
-        <button class="addSongButton">Add Song of the Day</button>
     </div>
     <br>
 </body>
@@ -120,21 +113,11 @@
                 songBy = document.createElement("p");
                 songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
 
-                button_group = document.createElement("div")
-                button_group.classList.add("button-group"); button_group.id = "button-group" + i;
-
-                detail = document.createElement("button")
-                detail.id = track_id;
-                //icon link click
-                icon_link = document.createElement("a")
-                icon_link.href = `https://open.spotify.com/track/${track_id}`;
-                icon_link.id = "iconlink" + i; icon_link.target = "_blank";
-
-                icon = document.createElement("img")
-                icon.src = "{{ url_for('static', filename='images/spotify_logo.png') }}"; icon.width = "19"; icon.height = "19";
+                select_group = document.createElement("div")
+                select_group.classList.add("select"); select_group.id = "button-group" + i;
 
                 button_art = document.createElement("img")
-                button_art.src = "{{ url_for('static', filename='/images/open_in_window.png') }}"; button_art.width = "19"; button_art.height = "19";
+                button_art.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art.width = "19"; button_art.height = "19";
 
                 document.getElementById("searchResults").appendChild(item)
                 document.getElementById("item" + i).appendChild(image)
@@ -145,14 +128,11 @@
                 document.getElementById("data" + i).appendChild(songName);
                 document.getElementById("data" + i).appendChild(songBy);
                 
-                document.getElementById("data" + i).appendChild(button_group);
-                
-                document.getElementById("button-group" + i).appendChild(icon_link);
-                document.getElementById("iconlink" + i).appendChild(icon);
+                document.getElementById("item" + i).appendChild(select_group);
 
                 //document.getElementById("button-group" + i).appendChild(detail);
 
-                button_group.innerHTML += `<button id='${track_id}' onclick='openData(this.id)'></button>`;
+                select_group.innerHTML += `<button id='${track_id}' onclick='addSong(this.id)' class='select-button'></button>`;
 
                 document.getElementById(track_id).appendChild(button_art);
 
@@ -161,72 +141,8 @@
         }) .catch(error => console.error(error)); 
     }
 
-    function openData(clicked_id) {
-        console.log(clicked_id)
-        fetch('http://192.168.4.44:5000/detail/' + clicked_id) .then(response => response.json()) .then(data => {
-            console.log(data);
-
-            //clearing current html in detail
-            document.getElementById("detail").textContent = ""
-
-            //top div
-            topInfo = document.createElement("div")
-            topInfo.id = "topInfo";
-            topInfo.classList.add("topInfo");
-            document.getElementById("detail").appendChild(topInfo);
-
-            image = document.createElement("img");
-            image.src = data["art"]; image.width = "100"; image.height = "100";
-            document.getElementById("topInfo").appendChild(image);
-
-            dataDetail = document.createElement("div");
-            dataDetail.id = "dataDetail";
-            dataDetail.classList.add("data2");
-            document.getElementById("topInfo").appendChild(dataDetail);
-
-            songName = document.createElement("h2");
-            songName.textContent = data["name"];
-            songName.style = `font-size: 32px; font-style: normal; font-weight: 700; line-height: normal; margin: 0px;`;
-            document.getElementById("dataDetail").appendChild(songName)
-
-            artist = document.createElement("p");
-            artist.textContent = data["artist"];
-            artist.style = `font-size: 15px; font-style: normal; font-weight: 700; line-height: normal; margin: 0px;`;
-            document.getElementById("dataDetail").appendChild(artist);
-
-            mainDetail = document.createElement("div");
-            mainDetail.classList.add("mainDetail");
-            mainDetail.id = "mainDetail";
-
-            mainDetail.innerHTML = `
-            <p>
-            Release Date: ${data["release"]}<br>
-            Album Type: ${data["album_type"]}<br>
-            Number of Songs: ${data["num_tracks"]}<br>
-            Disc Number: ${data["dis_num"]}<br>
-            Duration: ${data["duration"]}<br>
-            Explicit: ${data["explicit"]}<br>
-            Popularity: ${data["popularity"]}<br>
-            <br>
-            Acousticness: ${data["acousticness"]}<br>
-            Valence: ${data["valence"]}<br>
-            <br>
-            Tempo: ${data["tempo"]}<br>
-            Time Signature: ${data["time_signature"]}<br>
-            </p>
-            `;
-
-            document.getElementById("detail").appendChild(mainDetail);
-
-
-            
-                
-        }) .catch(error => console.error(error)); 
-    }
-
-    function addSong() {
-        // Implement functionality to add a song
-        // This might open a form for user input or trigger an action to add the song
+    function addSong(songID) {
+        console.log(songID);
     }
 </script>
 </html>
