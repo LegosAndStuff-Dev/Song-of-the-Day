@@ -109,9 +109,16 @@
                 songName = document.createElement("h3");
                 songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px";
                 console.log(name.length)
+                console.log(window.innerWidth)
 
                 if (name.length > 25) {
                     name = name.slice(0, 25)
+                    name += "..."
+                    songName.textContent = name
+                }
+
+                if (window.innerWidth < 900) {
+                    name = name.slice(0, 12)
                     name += "..."
                     songName.textContent = name
                 }
