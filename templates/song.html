@@ -151,28 +151,39 @@
                 document.getElementById("data" + i).appendChild(songName);
                 document.getElementById("data" + i).appendChild(songBy);
 
-                data.innerHTML += `<button id='${track_id}1' onclick='addSong(this.id)' class='select-button select-small'></button>`;
+                data.innerHTML += `<button id='${track_id}1${i}' onclick='addSong(this.id)' class='select-button select-small'></button>`;
                 
                 document.getElementById("item" + i).appendChild(select_group);
 
                 //document.getElementById("button-group" + i).appendChild(detail);
 
-                select_group.innerHTML += `<button id='${track_id}2' onclick='addSong(this.id)' class='select-button select-large'></button>`;
+                select_group.innerHTML += `<button id='${track_id}2${i}' onclick='addSong(this.id)' class='select-button select-large'></button>`;
 
-                document.getElementById(track_id + "1").appendChild(button_art1);
-                document.getElementById(track_id + "2").appendChild(button_art2);
-
-
-                
+                document.getElementById(track_id + `1${i}`).appendChild(button_art1);
+                document.getElementById(track_id + `2${i}`).appendChild(button_art2);
             }
         }) .catch(error => console.error(error)); 
     }
 
     function addSong(songID) {
+        items = [0, 1, 2, 3, 4, 5]
         console.log(songID);
         songLength = songID.length
-        trackID = songID.slice(0, songLength-1)
+        id = songID.slice(songLength-1, songLength)
+        trackID = songID.slice(0, songLength-2)
         console.log(trackID)
+        console.log(id)
+
+        items.splice(id, 1)
+
+        console.log(items)
+
+        for (let i = 0; i < items.length; i ++) {
+            document.getElementById(`item${items[i]}`).style = "display: none;"
+        }
+        document.getElementById(`${trackID}1${id}`).style = "display: none;"
+        document.getElementById(`${trackID}2${id}`).style = "display: none;"
+        
     }
 </script>
 </html>
