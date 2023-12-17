@@ -69,6 +69,16 @@
                 name = data["tracks"]["items"][i]["name"];
                 //Goal: to get all the artists or 2 of them and show them and not just one without the screen getting all messed up
                 artist = data["tracks"]["items"][i]["artists"][0]["name"];
+
+                if (data["tracks"]["items"][i]["artists"].length > 1) {
+                    artist = ""
+                    for (let s = 0; s < data["tracks"]["items"][i]["artists"].length; s ++) {
+                        artist += `${data["tracks"]["items"][i]["artists"][s]["name"]}, `;
+                    }
+                    length = artist.length
+                    artist = artist.slice(0, (length-2));
+                }
+                
                 image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
                 track_id = data["tracks"]["items"][i]["id"];
 
@@ -104,7 +114,6 @@
 
                 songName = document.createElement("h3");
                 songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px";
-                console.log(name.length)
 
                 if (name.length > 25) {
                     name = name.slice(0, 25)
