@@ -78,7 +78,7 @@
                     length = artist.length
                     artist = artist.slice(0, (length-2));
                 }
-                
+
                 image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
                 track_id = data["tracks"]["items"][i]["id"];
 
@@ -122,9 +122,11 @@
                 }
 
                 if (window.innerWidth < 500) {
-                    name = name.slice(0, 12)
-                    name += "..."
-                    songName.textContent = name
+                    if (name.length > 12) {
+                        name = name.slice(0, 12)
+                        name += "..."
+                        songName.textContent = name
+                    }
                 }
 
                 songBy = document.createElement("p");
@@ -168,6 +170,9 @@
 
     function addSong(songID) {
         console.log(songID);
+        songLength = songID.length
+        trackID = songID.slice(0, songLength-1)
+        console.log(trackID)
     }
 </script>
 </html>
