@@ -36,3 +36,21 @@
     justify-content: center;
     gap: 8px;
 }
+
+.select-small { 
+    display: none;
+}
+
+.select-large {
+    display: block;
+}
+
+@media screen and (max-width: 800px) {
+    .select-small {
+        display: block;
+    }
+
+    .select-large {
+        display: none;
+    }
+}

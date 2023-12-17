@@ -117,8 +117,12 @@
                 select_group = document.createElement("div")
                 select_group.classList.add("select"); select_group.id = "button-group" + i;
 
-                button_art = document.createElement("img")
-                button_art.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art.width = "19"; button_art.height = "19";
+                button_art1 = document.createElement("img")
+                button_art1.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art1.width = "19"; button_art1.height = "19";
+
+                button_art2 = document.createElement("img")
+                button_art2.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art2.width = "19"; button_art2.height = "19";
+
 
                 document.getElementById("searchResults").appendChild(item)
                 document.getElementById("item" + i).appendChild(image)
@@ -128,14 +132,18 @@
 
                 document.getElementById("data" + i).appendChild(songName);
                 document.getElementById("data" + i).appendChild(songBy);
+
+                data.innerHTML += `<button id='${track_id}1' onclick='addSong(this.id)' class='select-button select-small'></button>`;
                 
                 document.getElementById("item" + i).appendChild(select_group);
 
                 //document.getElementById("button-group" + i).appendChild(detail);
 
-                select_group.innerHTML += `<button id='${track_id}' onclick='addSong(this.id)' class='select-button'></button>`;
+                select_group.innerHTML += `<button id='${track_id}2' onclick='addSong(this.id)' class='select-button select-large'></button>`;
 
-                document.getElementById(track_id).appendChild(button_art);
+                document.getElementById(track_id + "1").appendChild(button_art1);
+                document.getElementById(track_id + "2").appendChild(button_art2);
+
 
                 
             }
