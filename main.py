@@ -85,7 +85,7 @@ api.add_resource(detail, "/detail/<string:id>")
 @app.route("/")
 @app.route("/home")
 def hello():
-    return render_template('song.html')
+    return render_template('index.html')
 
 @app.route("/song")
 def song():
