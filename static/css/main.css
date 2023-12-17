@@ -44,7 +44,7 @@ body {
 
 .item {
     display: inline-flex;
-    padding: 12px 6px;
+    padding: 12px 12px;
     align-items: flex-start;
     gap: 13px;
 }
