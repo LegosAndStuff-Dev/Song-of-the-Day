@@ -111,6 +111,12 @@
                     songName.textContent = name
                 }
 
+                if (window.innerWidth < 900) {
+                    name = name.slice(0, 12)
+                    name += "..."
+                    songName.textContent = name
+                }
+
                 songBy = document.createElement("p");
                 songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
 
