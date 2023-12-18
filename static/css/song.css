@@ -1,3 +1,12 @@
+/*
+COLORS:
+    red: #E63946 rgb(230, 57, 70)
+    cream: #F1FAEE rgb(105, 5, 98)
+    light blue: #A8DADC rgb(168, 218, 220)
+    blue: #457B9D rgb(69, 123, 157)
+    dark blue: #1D3557 rgb(29, 53, 87)
+*/
+
 .select {
     display: flex;
     padding: 28px 0px;
@@ -45,19 +54,52 @@
     display: block;
 }
 
-input[type=radio] {
-    box-sizing: border-box;
-    appearance: none;
-    background: white;
-    outline: 2px solid #333;
-    border: 3px solid white;
-    width: 20px;
-    height: 20px;
+.detail-button {
+    list-style-type: none;
+    margin: 25px 0 0 0;
+    padding: 0;
 }
 
-input[type='radio']:checked {
-    background: #333;
+.detail-button ul {
+    all: unset;
 }
+  
+.detail-button li {
+    float: left;
+    margin: 0 5px 0 0;
+    width: 100px;
+    height: 40px;
+    position: relative;
+    background-color: #457B9D;
+}
+  
+.detail-button label,
+.detail-button input {
+    display: block;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+  
+.detail-button input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;
+}
+  
+.detail-button input[type="radio"]:checked+label,
+.Checked+label {
+    background: #1D3557;
+}
+  
+.detail-button label {
+    padding: 5px;
+    border: 1px solid #F1FAEE;
+    z-index: 90;
+}
+
 
 @media screen and (max-width: 800px) {
     .select-small {
