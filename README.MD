@@ -12,9 +12,7 @@ At the beginning of 2023, I started a song of the day story on my Snapchat where
 ```
 git clone https://github.com/LegosAndStuff-Dev/Song-of-the-Day.git
 ```
-<img src="download\readme\dowloadzip.png"
-     alt="dowload zip"
-     style="width: 300px;"/>
+![Dowload](https://github.com/LegosAndStuff-Dev/Song-of-the-Day/blob/main/download/readme/dowloadzip.png)
 
 2) Find and open the repository
 3) Make a venv
