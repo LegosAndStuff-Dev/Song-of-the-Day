@@ -14,6 +14,7 @@ SCOPE = os.getenv("SCOPE")
 CLIENT_ID = os.getenv("CLIENT_ID")
 SECRET = os.getenv("SECRET")
 REDIRECT_URI = os.getenv("REDIRECT_URI")
+HOST = os.getenv("HOST")
 
 token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
 
@@ -93,4 +94,4 @@ def song():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="192.168.4.44")
+    app.run(debug=True, host=HOST)
