@@ -49,7 +49,7 @@ HOST
 
 ## Version
 
-If you want to stay update with the version, if I remember to do it, go to [version](download\version.md)
+If you want to stay update with the version, if I remember to do it, go to <a href="download\version.md">version</a>
 
 ## Questions
 
