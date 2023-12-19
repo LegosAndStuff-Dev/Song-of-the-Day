@@ -2,7 +2,7 @@
 ## Current Version: v0.3.2
 *   Added download.md
 * Added version.md
-* removed the addSong cuntion from index.html
+* removed the addSong function from index.html
 * style changes
 * fiexd the add song of the day button on index.html page
 
