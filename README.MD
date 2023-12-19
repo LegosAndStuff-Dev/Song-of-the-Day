@@ -13,7 +13,7 @@ At the beginning of 2023, I started a song of the day story on my Snapchat where
 git clone https://github.com/LegosAndStuff-Dev/Song-of-the-Day.git
 ```
 <img src="download\readme\dowloadzip.png"
-     alt="Markdown Monster icon"
+     alt="dowload zip"
      style="width: 300px;"/>
 
 2) Find and open the repository
