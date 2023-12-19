@@ -189,23 +189,23 @@
     }
 
     function addSong(songID) {
-        items = [0, 1, 2, 3, 4, 5]
+        items = [0, 1, 2, 3, 4, 5];
         console.log(songID);
-        songLength = songID.length
-        id = songID.slice(songLength-1, songLength)
-        trackID = songID.slice(0, songLength-2)
-        console.log(trackID)
-        console.log(id)
+        songLength = songID.length;
+        id = songID.slice(songLength-1, songLength);
+        trackID = songID.slice(0, songLength-2);
+        console.log(trackID);
+        console.log(id);
 
-        items.splice(id, 1)
+        items.splice(id, 1);
 
-        console.log(items)
+        console.log(items);
 
         for (let i = 0; i < items.length; i ++) {
-            document.getElementById(`item${items[i]}`).style = "display: none;"
+            document.getElementById(`item${items[i]}`).style = "display: none;";
         }
-        document.getElementById(`${trackID}1${id}`).style = "display: none;"
-        document.getElementById(`${trackID}2${id}`).style = "display: none;"
+        document.getElementById(`${trackID}1${id}`).style = "display: none;";
+        document.getElementById(`${trackID}2${id}`).style = "display: none;";
         document.getElementById("songInfo").style = "display: block;";
     }
 </script>
