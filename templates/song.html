@@ -51,15 +51,26 @@
             <p style="text-align: center; position: relative;">Please Search for a Song</p>
         </div>
     </div>
-    <div id="songInfo" class="detail-button">
-        <ul class="detail-button">
+    <div id="songInfo" class="detail-button" style="display: none;">
+        <ul id="happy-sad" class="detail-button">
             <li class="left-detail">
                 <input type="radio" id="happy" name="hap-sad"/>
                 <label for="happy">Happy</label>
             </li>
             <li class="right-detail">
-                <input type="radio" id="sad" name="hap-sad" />
+                <input type="radio" id="sad" name="hap-sad"/>
                 <label for="sad">Sad</label>
+            </li>
+        </ul>
+        <br><br>
+        <ul id="upbeat-calm" class="detail-button">
+            <li class="left-detail">
+                <input type="radio" id="upbeat" name="upbeat-calm"/>
+                <label for="upbeat">Upbeat</label>
+            </li>
+            <li class="right-detail">
+                <input type="radio" id="calm" name="upbeat-calm"/>
+                <label for="calm">Calm/Slow</label>
             </li>
         </ul>
     </div>
@@ -195,7 +206,7 @@
         }
         document.getElementById(`${trackID}1${id}`).style = "display: none;"
         document.getElementById(`${trackID}2${id}`).style = "display: none;"
-        
+        document.getElementById("songInfo").style = "display: block;";
     }
 </script>
 </html>
