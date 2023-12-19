@@ -43,7 +43,7 @@ REDIRECT_URI
 USERNAME
 HOST
 ```
-(To know what everything is go to [download](download\download.md))
+(To know what everything is go to <a href="download\download.md">version</a>)
 
 7) Now run the code. Everything should be working by name if it is not please make a "issue" to get it fixed asap
 
