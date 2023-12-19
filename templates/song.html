@@ -75,6 +75,10 @@
         </ul>
     </div>
     <br>
+    <div id="addSongButton" style="text-align: center; display: none;">
+        <button class="addSongButton" onclick="songToDB()">Add Song of the Day</button>
+    </div>
+    <br>
 </body>
 <script>
     // JavaScript functions for search and adding songs
@@ -207,10 +211,11 @@
         document.getElementById(`${trackID}1${id}`).style = "display: none;";
         document.getElementById(`${trackID}2${id}`).style = "display: none;";
         document.getElementById("songInfo").style = "display: block;";
+        document.getElementById("addSongButton").style = "text-align: center; display: block";
     }
 
     function songToDB() {
-        
+
     }
 </script>
 </html>
