@@ -36,7 +36,7 @@
     <!-- Search bar for songs -->
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="yyyy-mm-dd">
-        <button onclick="searchSongs()" class="search">
+        <button onclick="findSongs()" class="search">
             <span class="material-symbols-outlined" style="color: #F1FAEE;">
                 search
             </span>
@@ -44,19 +44,7 @@
     </div>
 
     <!-- Testing area -->
-    <div class='parent flex-parent'>
-        <div class='child flex-child' id="searchResults">
-            <!-- This is where each item goes for the song (6 items) -->
-            <p style="text-align: center; position: relative;">Please Search for a Song</p>
-        </div>
-        <div class='child flex-child' id="detail">
-            <!-- This is where the addition detail of a song would go -->
-            <p style="text-align: center; position: relative;">No Song Detail</p>
-        </div>
-    </div>
-    <div style="text-align: center;">
-        <a href="/song"><button class="addSongButton">Add Song of the Day</button></a>
-    </div>
+
     <br>
 </body>
 <script>
