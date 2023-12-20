@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
+import sqlite3
 import os
 import json
 
