@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("static\database\song.sqlite")
 cursor = conn.cursor()
 
-def makeTable()
+def makeTable():
     cursor.execute("DROP TABLE IF EXISTS SONG")
 
     table = """
