@@ -1,5 +1,5 @@
 # Song of the Day
-(This is a still work in progress and not fully done, this readme is now outdated as of v0.3.1)
+(This is a still work in progress and not fully done, this readme is now outdated as of v0.3.2)
 
 
 
