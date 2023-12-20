@@ -4,31 +4,37 @@ conn = sqlite3.connect("static\database\song.sqlite")
 cursor = conn.cursor()
 
 def makeTable():
-    cursor.execute("DROP TABLE IF EXISTS SONG")
+    yn = input("Would you like to reset or make a song table (y/n)? ")
 
-    table = """
-            CREATE TABLE SONG (
-                date TEXT,
-                year INT,
-                month INT,
-                day INT,
-                songName TEXT,
-                trackID TEXT,
-                happy INT,
-                sad INT,
-                Upbeat INT,
-                Calm INT
+    if yn == "y":
+        cursor.execute("DROP TABLE IF EXISTS SONG")
 
-            );
-    """
+        table = """
+                CREATE TABLE SONG (
+                    date TEXT,
+                    year INT,
+                    month INT,
+                    day INT,
+                    songName TEXT,
+                    trackID TEXT,
+                    happy INT,
+                    sad INT,
+                    Upbeat INT,
+                    Calm INT
 
-    cursor.execute(table)
+                );
+        """
 
-    print("Song table is now ready")
+        cursor.execute(table)
 
-    conn.commit()
+        print("Song table is now ready")
 
-    conn.close()
+        conn.commit()
+
+        conn.close()
+    
+    elif yn == "n":
+        print("No table was reset or made")
 
 def test():
     cursor.execute(f"""
