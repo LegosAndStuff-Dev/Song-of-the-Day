@@ -1,8 +1,6 @@
 # Version
-## Current Version: v0.4.0
-* Added function now so you can add a song to the database
-* Minor Bug Fixes
-* README is not updated
+## Current Version: v0.4.1
+* Added a success message when you add a song to the song of the day
 
 
 ## Version Log
