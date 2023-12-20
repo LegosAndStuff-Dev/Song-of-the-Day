@@ -140,7 +140,7 @@
                 img.src = image_pic; img.height = "75"; img.width = "75";
 
                 songName = document.createElement("h3");
-                songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px";
+                songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px"; songName.id = "name" + i
 
                 if (name.length > 25) {
                     name = name.slice(0, 25)
@@ -214,12 +214,16 @@
         document.getElementById("addSongButton").style = "text-align: center; display: block";
 
         document.getElementById("addSongButton").innerHTML = `<button class="addSongButton" id="${trackID}" onclick="songToDB(this.id)">Add Song of the Day</button>`
+
+        document.getElementById("name" + id).id = "songName";
     }
 
     function songToDB(trackID) {
         happy_sad = document.querySelectorAll('input[name="hap-sad"]:checked');
         calm_up = document.querySelectorAll(`input[name="upbeat-calm"]:checked`)
-        console.log(happy_sad[0].id)
+        
+        songName = document.getElementById("songName").innerHTML;
+
         fetch('http://192.168.4.44:5000/songToDB/', {
             method: 'POST',
             headers: {
@@ -228,6 +232,7 @@
             },
             body: JSON.stringify(
                 {"trackID": trackID,
+                 "songName": songName,
                  "happy-sad": happy_sad[0].id,
                  "calm-upbeat": calm_up[0].id}
                                 )
