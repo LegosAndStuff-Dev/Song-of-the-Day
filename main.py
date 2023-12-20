@@ -87,13 +87,14 @@ class detail(Resource):
     
 class songtoDB(Resource):
     def post(self):
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
+
         json_data = request.get_json(force=True)
         trackID = json_data['trackID']
         happy_sad = json_data['happy-sad']
         calm_upbeat = json_data['calm-upbeat']
-        print(trackID)
-        print(happy_sad)
-        print(calm_upbeat)
+        songName = json_data["songName"]
 
         happy = 0
         sad = 0
@@ -118,9 +119,9 @@ class songtoDB(Resource):
         month = datetime.datetime.now().strftime("%m")
         day = datetime.datetime.now().strftime(f"%d")
 
-        #cursor.execute(f"""insert into SONG VALUES ('2023-12-20', 2023, 12, 20, 'Daylight', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
+        cursor.execute(f"""insert into SONG VALUES ('{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
         
-        #conn.commit()
+        conn.commit()
         conn.close()
 
         return {"200": "success"}
