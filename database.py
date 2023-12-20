@@ -36,6 +36,18 @@ def makeTable():
     elif yn == "n":
         print("No table was reset or made")
 
+def getNumHappy():
+    pass
+
+def getNumSad():
+    pass
+
+def getNumCalm():
+    pass
+
+def getNumUpbeat():
+    pass
+
 def test():
     cursor.execute(f"""
     INSERT INTO SONG VALUES ("2023-12-20", 20223, 12, 20, "Daylight", "1odExI7RdWc4BT515LTAwj", 1, 0, 1, 0)
