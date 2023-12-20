@@ -37,7 +37,14 @@ def makeTable():
         print("No table was reset or made")
 
 def getNumHappy():
-    pass
+    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM SONG WHERE happy=1")
+
+    items = cursor.fetchall()
+
+    return len(items)
 
 def getNumSad():
     pass
@@ -56,4 +63,4 @@ def test():
     conn.commit()
     conn.close()
 
-makeTable()
+getNumHappy()
