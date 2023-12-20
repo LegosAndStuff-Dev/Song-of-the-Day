@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_restful import Api, Resource
 from dotenv import load_dotenv
 import spotipy
@@ -80,8 +80,21 @@ class detail(Resource):
         #    outfile.write(json_object)
         return songDetail
     
+class songtoDB(Resource):
+    def post(self):
+        json_data = request.get_json(force=True)
+        trackID = json_data['trackID']
+        happy_sad = json_data['happy-sad']
+        calm_upbeat = json_data['calm-upbeat']
+        print(trackID)
+        print(happy_sad)
+        print(calm_upbeat)
+        
+        return {"200": "success"}
+    
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
+api.add_resource(songtoDB, "/songToDB/")
 
 @app.route("/")
 @app.route("/home")
