@@ -60,6 +60,7 @@ cover/
 local_settings.py
 db.sqlite3
 *.sqlite
+static\database\song.sqlite
 db.sqlite3-journal
 
 # Flask stuff:
