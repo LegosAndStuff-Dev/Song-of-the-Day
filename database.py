@@ -47,13 +47,34 @@ def getNumHappy():
     return len(items)
 
 def getNumSad():
-    pass
+    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM SONG WHERE sad=1")
+
+    items = cursor.fetchall()
+
+    return len(items)
 
 def getNumCalm():
-    pass
+    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM SONG WHERE Calm=1")
+
+    items = cursor.fetchall()
+
+    return len(items)
 
 def getNumUpbeat():
-    pass
+    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1")
+
+    items = cursor.fetchall()
+
+    return len(items)
 
 def test():
     cursor.execute(f"""
@@ -63,4 +84,4 @@ def test():
     conn.commit()
     conn.close()
 
-getNumHappy()
+makeTable()
