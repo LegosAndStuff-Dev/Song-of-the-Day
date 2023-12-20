@@ -1,6 +1,13 @@
 # Version
-## Current Version: v0.4.1
-* Added a success message when you add a song to the song of the day
+## Current Version: v0.4.2
+* Made an archive page
+* Adding a song of the day should all work now
+* Added several functions to get number of details, functions below
+    * getNumHappy
+    * getNumSad
+    * getNumUpbeat
+    * getNumCalm
+
 
 
 ## Version Log
@@ -23,3 +30,5 @@ v0.3.1: updated readme to be mostly accurate
 v0.3.2: added download.md and version.md
 <br>
 v0.4.0: now you can add the song of the day to the database
+<br>
+v0.4.1: Added a success message when you add a song to the song of the day
