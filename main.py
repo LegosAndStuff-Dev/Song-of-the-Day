@@ -25,6 +25,9 @@ if token:
 app = Flask(__name__)
 api = Api(app)
 
+conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+cursor = conn.cursor()
+
 class serachSong(Resource):
     def get(self, search):
         search = sp.search(q=search, type="track", limit=6)
@@ -90,7 +93,31 @@ class songtoDB(Resource):
         print(trackID)
         print(happy_sad)
         print(calm_upbeat)
+
+        happy = 0
+        sad = 0
+        upbeat = 0
+        calm = 0
+
+        if happy_sad == "happy":
+            happy += 1
+
+        elif happy_sad == "sad":
+            sad += 1
+
+        if calm_upbeat == "calm":
+            calm += 1
+
+        elif calm_upbeat == "upbeat":
+            upbeat += 1
+
+        print(happy, sad, calm, upbeat)
+
+        cursor.execute(f"""insert into SONG VALUES ('2023-12-20', 2023, 12, 20, 'Daylight', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
         
+        conn.commit()
+        conn.close()
+
         return {"200": "success"}
     
 api.add_resource(serachSong, "/search/<string:search>")
