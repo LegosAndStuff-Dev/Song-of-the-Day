@@ -66,15 +66,28 @@ def getNumCalm():
 
     return len(items)
 
-def getNumUpbeat():
-    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
-    cursor = conn.cursor()
+def getNumUpbeat(month="Total"):
+    monthInt = month
+    month = str(month)
+    if month.lower() == "total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
 
-    cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1")
+        cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1")
 
-    items = cursor.fetchall()
+        items = cursor.fetchall()
 
-    return len(items)
+        return len(items)
+    
+    elif month.lower() != "Total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1 AND month={monthInt}")
+
+        items = cursor.fetchall()
+
+        return len(items)
 
 def test():
     cursor.execute(f"""
