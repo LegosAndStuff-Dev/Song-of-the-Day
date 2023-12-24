@@ -16,6 +16,7 @@ def makeTable():
                     month INT,
                     day INT,
                     songName TEXT,
+                    artist TEXT,
                     trackID TEXT,
                     happy INT,
                     sad INT,
@@ -91,7 +92,7 @@ def getNumUpbeat(month="Total"):
 
 def test():
     cursor.execute(f"""
-    INSERT INTO SONG VALUES ("2023-12-20", 20223, 12, 20, "Daylight", "1odExI7RdWc4BT515LTAwj", 1, 0, 1, 0)
+    INSERT INTO SONG VALUES ("2023-12-20", 20223, 12, 20, "Daylight", "David Kushner", "1odExI7RdWc4BT515LTAwj", 1, 0, 1, 0)
     """)
 
     conn.commit()
