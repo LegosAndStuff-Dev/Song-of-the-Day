@@ -1,3 +1,13 @@
+/*
+COLORS:
+    red: #E63946 rgb(230, 57, 70)
+    cream: #F1FAEE rgb(105, 5, 98)
+    light blue: #A8DADC rgb(168, 218, 220)
+    blue: #457B9D rgb(69, 123, 157)
+    dark blue: #1D3557 rgb(29, 53, 87)
+*/
+
+
 .search-bar {
     align-items: center;
     justify-content: center;
@@ -24,9 +34,15 @@ table {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #457B9D;
 }
 
 td {
     padding: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    table {
+        width: 90%;
+    }
 }
