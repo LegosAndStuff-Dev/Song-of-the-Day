@@ -212,6 +212,7 @@ def archive():
     if none == "[]":
         items = f"No song in the {monthSpelled}!"
         song = False
+
     return render_template("archive.html", items=items, song=song)
 
 

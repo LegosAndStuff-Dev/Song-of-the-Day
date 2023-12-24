@@ -59,8 +59,23 @@
     <br>
     <p style="text-align: center;">{{items}}</p>
     {% elif song == True: %}
+    
     <div class="result-song">
-        {{items}}
+        <table>
+            <tr>
+              <th>Date</th>
+              <th>Song Name</th>
+              <th>Artist</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+              <td>{{item[2]}}/{{item[3]}}</td>
+              <td>{{item[4]}}</td>
+              <td>{{item[5]}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        <br>
     </div>
     {% endif %}
 
