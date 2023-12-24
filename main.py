@@ -64,6 +64,7 @@ class detail(Resource):
         valence = features["valence"]
 
         songDetail = {
+            "id": id,
             "name": songName,
             "artist": artist,
             "art": art,
