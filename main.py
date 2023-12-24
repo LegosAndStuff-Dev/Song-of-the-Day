@@ -158,7 +158,7 @@ class findSong(Resource):
 
             if none == "[]":
                 return {"200": "success",
-                        "output": "None"}
+                        "output": None}
 
             else:
                 return {"200": "success",
@@ -172,7 +172,7 @@ class findSong(Resource):
 
             if none == "[]":
                 return {"200": "success",
-                        "output": "None"}
+                        "output": None}
 
             else:
                 return {"200": "success",
