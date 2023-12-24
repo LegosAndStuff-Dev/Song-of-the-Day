@@ -1,0 +1,11 @@
+button {
+    background-color: #457B9D;
+    color: #F1FAEE;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 2.5px solid #457B9D;
+    padding: 10px;
+    height: 50px;
+    width: 20%;
+    border-radius: 10px;
+}
