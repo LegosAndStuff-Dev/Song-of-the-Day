@@ -35,12 +35,22 @@
     <!-- Main content -->
     <!-- Search bar for songs -->
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="yyyy-mm-dd">
-        <button onclick="findSongs()" class="search">
-            <span class="material-symbols-outlined" style="color: #F1FAEE;">
-                search
-            </span>
-        </button>
+        <div class="search-bar-item">
+            <input type="text" id="searchInput" placeholder="yyyy-mm-dd">
+            <button onclick="findSongs('date')" class="search">
+                <span class="material-symbols-outlined" style="color: #F1FAEE;">
+                    search
+                </span>
+            </button>
+        </div>
+        <div class="search-bar-item">
+            <input type="text" id="searchInput" placeholder="Archive Songs">
+            <button onclick="findSongs('song')" class="search">
+                <span class="material-symbols-outlined" style="color: #F1FAEE;">
+                    search
+                </span>
+            </button>
+        </div>
     </div>
 
     <!-- Testing area -->
@@ -49,5 +59,14 @@
 </body>
 <script>
     // JavaScript functions for search and adding songs
+    function findSongs(type) {
+        if (type == "date") {
+            console.log("date")
+        }
+
+        if (type == "song") {
+            console.log("song")
+        }
+    }
 </script>
 </html>

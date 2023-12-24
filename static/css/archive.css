@@ -1,0 +1,10 @@
+.search-bar {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.search-bar-item {
+    width: 50%;
+    display: block;
+}
