@@ -9,6 +9,24 @@
     display: block;
 }
 
-.results-song {
+.search-bar-item input {
+    width: 50%;
+}
+
+.result-song {
     padding: 16px;
+}
+
+table {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    padding: 5px;
 }
