@@ -37,7 +37,7 @@
     <!-- Search bar for songs -->
     <div class="search-bar">
         <div class="search-bar-item">
-            <input type="text" id="searchInput" placeholder="yyyy-mm-dd">
+            <input type="text" id="dateInput" placeholder="yyyy-mm-dd">
             <button onclick="findSongs('date')" class="search">
                 <span class="material-symbols-outlined" style="color: #F1FAEE;">
                     search
@@ -45,7 +45,7 @@
             </button>
         </div>
         <div class="search-bar-item">
-            <input type="text" id="searchInput" placeholder="Archive Songs">
+            <input type="text" id="songInput" placeholder="Archive Songs...">
             <button onclick="findSongs('song')" class="search">
                 <span class="material-symbols-outlined" style="color: #F1FAEE;">
                     search
@@ -62,11 +62,37 @@
     // JavaScript functions for search and adding songs
     function findSongs(type) {
         if (type == "date") {
-            console.log("date")
+            fetch('http://192.168.4.44:5000/findSong/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {"type": "date",
+                 "search": document.getElementById("dateInput").value}
+                                )
+            })
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)))
+            
         }
 
         if (type == "song") {
-            console.log("song")
+            console.log(document.getElementById("songInput").value)
+            fetch('http://192.168.4.44:5000/findSong/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {"type": "song",
+                 "search": document.getElementById("songInput").value}
+                                )
+            })
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)))
         }
     }
 </script>

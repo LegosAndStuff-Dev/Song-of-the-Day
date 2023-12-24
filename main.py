@@ -138,9 +138,51 @@ class songtoDB(Resource):
 
         return {"200": "success"}
     
+class findSong(Resource):
+    def post(self):
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
+
+        json_data = request.get_json(force=True)
+        type = json_data['type']
+        search = json_data['search']
+
+        if type == "date":
+            cursor.execute(f"SELECT * FROM SONG WHERE date='{search}'")
+
+            items = cursor.fetchall()
+            none = str(items)
+
+            if none == "[]":
+                pass
+
+            else:
+                return {"200": "success",
+                        "output": items}
+
+        if type == "song":
+            print("hey")
+            cursor.execute(f"SELECT * FROM SONG WHERE songNAME LIKE '{search}'")
+
+            items = cursor.fetchall()
+            none = str(items)
+
+            if none == "[]":
+                pass
+
+            else:
+                return {"200": "success",
+                        "output": items}      
+
+
+        conn.close()
+
+        return {"200": "success"}
+    
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
 api.add_resource(songtoDB, "/songToDB/")
+api.add_resource(findSong, "/findSong/")
 
 @app.route("/")
 @app.route("/home")
