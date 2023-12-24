@@ -20,8 +20,8 @@ def makeTable():
                     trackID TEXT,
                     happy INT,
                     sad INT,
-                    Upbeat INT,
-                    Calm INT
+                    upbeat INT,
+                    calm INT
 
                 );
         """
@@ -61,7 +61,7 @@ def getNumCalm():
     conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
     cursor = conn.cursor()
 
-    cursor.execute(f"SELECT * FROM SONG WHERE Calm=1")
+    cursor.execute(f"SELECT * FROM SONG WHERE calm=1")
 
     items = cursor.fetchall()
 
@@ -74,7 +74,7 @@ def getNumUpbeat(month="Total"):
         conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
         cursor = conn.cursor()
 
-        cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1")
+        cursor.execute(f"SELECT * FROM SONG WHERE upbeat=1")
 
         items = cursor.fetchall()
 
@@ -84,7 +84,7 @@ def getNumUpbeat(month="Total"):
         conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
         cursor = conn.cursor()
 
-        cursor.execute(f"SELECT * FROM SONG WHERE Upbeat=1 AND month={monthInt}")
+        cursor.execute(f"SELECT * FROM SONG WHERE upbeat=1 AND month={monthInt}")
 
         items = cursor.fetchall()
 
