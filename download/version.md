@@ -1,15 +1,11 @@
 # Version
-## Current Version: v0.4.3
-* Updated getNumUpbeat to have more instance
-* Made cursor when hovering over input radio button
-* Added Artist to the database
-* Changed colum names in database
-* Started working on archive page
-    * added small bit of style
-    * added 2 search boxes one for date, one for an actual song
-    * made a findSongs function
-* Made a icon, and scaled up version logo
-* Made another request endpoint to search database
+## Current Version: v0.5.0
+* Added Track ID to the song detail
+* Finished Archive.html
+* Removed unneed code
+* Updated database.py
+* Added Recap link at the top
+
 
 
 
@@ -38,3 +34,5 @@ v0.4.0: now you can add the song of the day to the database
 v0.4.1: Added a success message when you add a song to the song of the day
 <br>
 v0.4.2: Made Archive page, added function to get total number of calm, happy, ...
+<br>
+v0.4.3: Updated database, Added Icon, Added another request
