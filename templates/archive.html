@@ -60,6 +60,7 @@
     <p style="text-align: center;">{{items}}</p>
     {% elif song == True: %}
     <br>
+    <p style="text-align: center; display: none;" id="noSong">No Songs Available</p>
     <div class="result-song" id="divSong">
         <table id="songTable">
             <tr>
@@ -76,7 +77,7 @@
             {% endfor %}
         </table>
         <br>
-        <table class="detail">
+        <table class="detail" id="detailSong">
             <tr>
                 <th>Happy</th>
                 <th>Sad</th>
@@ -117,6 +118,8 @@
             })
             .then(response => response.json())
             .then(response => {
+                document.getElementById("noSong").style = "display: none;"
+                document.getElementById("detailSong").style = "display: none;";
                 table = document.getElementById("songTable");
                 table.innerHTML = ""
                 table.innerHTML = `
@@ -126,7 +129,10 @@
                     <th>Artist</th>
                 </tr>
                 `
-                console.log(table.innerHTML)
+                if (response["output"] == null) {
+                    document.getElementById("noSong").style = "text-align: center;"
+                }
+
                 for (let i = 0; i < response["output"].length; i ++ ) {
                     table.innerHTML += `
                     <tr>
@@ -141,7 +147,6 @@
         }
 
         if (type == "song") {
-            console.log(document.getElementById("songInput").value)
             fetch('http://192.168.4.44:5000/findSong/', {
             method: 'POST',
             headers: {
@@ -155,6 +160,9 @@
             })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
+                document.getElementById("noSong").style = "display: none;"
+                document.getElementById("detailSong").style = "display: none;";
                 table = document.getElementById("songTable");
                 table.innerHTML = ""
                 table.innerHTML = `
@@ -164,7 +172,9 @@
                     <th>Artist</th>
                 </tr>
                 `
-                console.log(table.innerHTML)
+                if (response["output"] == null) {
+                    document.getElementById("noSong").style = "text-align: center;"
+                }
                 for (let i = 0; i < response["output"].length; i ++ ) {
                     table.innerHTML += `
                     <tr>
