@@ -155,21 +155,22 @@ class findSong(Resource):
             none = str(items)
 
             if none == "[]":
-                pass
+                return {"200": "success",
+                        "output": "None"}
 
             else:
                 return {"200": "success",
                         "output": items}
 
         if type == "song":
-            print("hey")
             cursor.execute(f"SELECT * FROM SONG WHERE songNAME LIKE '{search}'")
 
             items = cursor.fetchall()
             none = str(items)
 
             if none == "[]":
-                pass
+                return {"200": "success",
+                        "output": "None"}
 
             else:
                 return {"200": "success",
@@ -196,7 +197,22 @@ def song():
 
 @app.route("/archive")
 def archive():
-    return render_template("archive.html")
+    conn = sqlite3.connect("static\database\song.sqlite")
+    cursor = conn.cursor()
+
+    month = datetime.datetime.now().strftime("%m")
+    monthSpelled = datetime.datetime.now().strftime("%B")
+
+    cursor.execute(f"SELECT * FROM SONG WHERE month='{month}'")
+
+    items = cursor.fetchall()
+    song = True
+    none = str(items)
+
+    if none == "[]":
+        items = f"No song in the {monthSpelled}!"
+        song = False
+    return render_template("archive.html", items=items, song=song)
 
 
 if __name__ == "__main__":
