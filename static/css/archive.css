@@ -41,6 +41,10 @@ td {
     padding: 5px;
 }
 
+.detail {
+    table-layout: fixed;
+}
+
 @media screen and (max-width: 800px) {
     table {
         width: 90%;

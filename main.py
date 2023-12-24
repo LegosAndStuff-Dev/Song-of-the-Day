@@ -9,6 +9,8 @@ import datetime
 import os
 import json
 
+from database import getNumCalm, getNumHappy, getNumSad, getNumUpbeat
+
 load_dotenv()
 
 USERNAME = os.getenv("USERNAME")
@@ -213,7 +215,15 @@ def archive():
         items = f"No song in the {monthSpelled}!"
         song = False
 
-    return render_template("archive.html", items=items, song=song)
+    happy = getNumHappy(month)
+    sad = getNumSad(month)
+
+    upbeat = getNumUpbeat(month)
+    calm = getNumCalm(month)
+
+    print(happy, sad, upbeat, calm)
+
+    return render_template("archive.html", items=items, song=song, happy=happy, sad=sad, upbeat=upbeat, calm=calm)
 
 
 if __name__ == "__main__":
