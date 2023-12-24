@@ -55,6 +55,15 @@
     </div>
 
     <!-- Testing area -->
+    {% if song  == False: %}
+    <br>
+    <p style="text-align: center;">{{items}}</p>
+    {% elif song == True: %}
+    <div class="result-song">
+        {{items}}
+    </div>
+    {% endif %}
+
 
     <br>
 </body>
