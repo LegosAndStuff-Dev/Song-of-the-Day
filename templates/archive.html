@@ -74,7 +74,7 @@
               <td>{{item[5]}}</td>
             </tr>
             {% endfor %}
-          </table>
+        </table>
         <br>
     </div>
     {% endif %}
@@ -98,12 +98,9 @@
                                 )
             })
             .then(response => response.json())
-            //.then(response => console.log(JSON.stringify(response)))
             .then(response => {
-                document.getElementById("songTable").style = "display: none;";
-
-                table = document.createElement("table");
-                table.id = "results"
+                table = document.getElementById("songTable");
+                table.innerHTML = ""
                 table.innerHTML = `
                 <tr>
                     <th>Date</th>
@@ -111,7 +108,7 @@
                     <th>Artist</th>
                 </tr>
                 `
-                    
+                console.log(table.innerHTML)
                 for (let i = 0; i < response["output"].length; i ++ ) {
                     table.innerHTML += `
                     <tr>
@@ -121,8 +118,6 @@
                     </tr>
                     `
                 }
-
-                document.getElementById("divSong").appendChild(table)
             })
             
         }
