@@ -197,6 +197,10 @@ def hello():
 def song():
     return render_template("song.html")
 
+@app.route("/recap")
+def recap():
+    return render_template("recap.html")
+
 @app.route("/archive")
 def archive():
     conn = sqlite3.connect("static\database\song.sqlite")
