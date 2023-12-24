@@ -87,6 +87,7 @@ class detail(Resource):
     
 class songtoDB(Resource):
     def post(self):
+
         conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
         cursor = conn.cursor()
 
@@ -94,7 +95,20 @@ class songtoDB(Resource):
         trackID = json_data['trackID']
         happy_sad = json_data['happy-sad']
         calm_upbeat = json_data['calm-upbeat']
-        songName = json_data["songName"]
+
+        search = sp.track(trackID)
+
+        artist = search["artists"][0]["name"]
+        if len(search["artists"]) > 1:
+            artist = ""
+            for i in range(len(search["artists"])):
+                print(search["artists"][i]["name"])
+                artist += f"{search['artists'][i]['name']}, "
+
+            artist = artist.removesuffix(", ")
+
+
+        songName = search["name"]
 
         happy = 0
         sad = 0
@@ -113,13 +127,11 @@ class songtoDB(Resource):
         elif calm_upbeat == "upbeat":
             upbeat += 1
 
-        print(happy, sad, calm, upbeat)
-
         year = datetime.datetime.now().strftime("%Y")
         month = datetime.datetime.now().strftime("%m")
         day = datetime.datetime.now().strftime(f"%d")
 
-        cursor.execute(f"""insert into SONG VALUES ('{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
+        cursor.execute(f"""insert into SONG VALUES ('{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{artist}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
         
         conn.commit()
         conn.close()
