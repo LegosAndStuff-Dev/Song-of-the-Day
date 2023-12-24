@@ -136,5 +136,3 @@ def test():
 
     conn.commit()
     conn.close()
-
-makeTable()
