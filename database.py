@@ -37,37 +37,76 @@ def makeTable():
     elif yn == "n":
         print("No table was reset or made")
 
-def getNumHappy():
-    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
-    cursor = conn.cursor()
+def getNumHappy(month="total"):
+    monthInt = month
+    month = str(month)
+    if month.lower() == "total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
 
-    cursor.execute(f"SELECT * FROM SONG WHERE happy=1")
+        cursor.execute(f"SELECT * FROM SONG WHERE happy=1")
 
-    items = cursor.fetchall()
+        items = cursor.fetchall()
 
-    return len(items)
+        return len(items)
+    
+    elif month.lower() != "Total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
 
-def getNumSad():
-    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
-    cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM SONG WHERE happy=1 AND month={monthInt}")
 
-    cursor.execute(f"SELECT * FROM SONG WHERE sad=1")
+        items = cursor.fetchall()
 
-    items = cursor.fetchall()
+        return len(items)
 
-    return len(items)
+def getNumSad(month="total"):
+    monthInt = month
+    month = str(month)
+    if month.lower() == "total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
 
-def getNumCalm():
-    conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
-    cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM SONG WHERE sad=1")
 
-    cursor.execute(f"SELECT * FROM SONG WHERE calm=1")
+        items = cursor.fetchall()
 
-    items = cursor.fetchall()
+        return len(items)
+    
+    elif month.lower() != "Total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
 
-    return len(items)
+        cursor.execute(f"SELECT * FROM SONG WHERE sad=1 AND month={monthInt}")
 
-def getNumUpbeat(month="Total"):
+        items = cursor.fetchall()
+
+        return len(items)
+
+def getNumCalm(month="total"):
+    monthInt = month
+    month = str(month)
+    if month.lower() == "total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM SONG WHERE calm=1")
+
+        items = cursor.fetchall()
+
+        return len(items)
+    
+    elif month.lower() != "Total":
+        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM SONG WHERE calm=1 AND month={monthInt}")
+
+        items = cursor.fetchall()
+
+        return len(items)
+
+def getNumUpbeat(month="total"):
     monthInt = month
     month = str(month)
     if month.lower() == "total":
