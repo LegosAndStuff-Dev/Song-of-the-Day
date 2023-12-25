@@ -45,7 +45,7 @@
     <!-- Testing area -->
     <div style="align-items: center;">
         <div class="topTable">
-            <table>
+            <table id="artists">
                 <tr>
                     <th>Top 10 Artists</th>
                 </tr>
@@ -57,7 +57,7 @@
             </table>
         </div>
         <div class="topTable">
-            <table>
+            <table id="song">
                 <tr>
                     <th>Top 10 Songs</th>
                 </tr>
@@ -82,6 +82,29 @@
         document.getElementById("6m").classList.remove("active")
         document.getElementById("lifetime").classList.remove("active")
         document.getElementById(id).classList.add("active")
+
+        fetch('http://192.168.4.44:5000/getTop/' + id) .then(response => response.json()) .then(response => {
+            console.log(response);
+            console.log(response["artists"])
+            console.log(response["song"])
+
+            artists = document.getElementById("artists");
+            artists.innerHTML = `
+            <tr>
+                <th>Top 10 Artists</th>
+            </tr>`;
+
+            song = document.getElementById("song");
+            song.innerHTML = "";
+
+            for (let i = 0; i < response["artists"]["items"].length; i++) {
+                artists.innerHTML += `
+                <tr>
+                    <td>${response["artists"]["items"][i]["name"]}</td>
+                </tr>
+                `
+            }
+        }) .catch(error => console.error(error)); 
     }
 </script>
 </html>
