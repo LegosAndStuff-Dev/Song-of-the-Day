@@ -183,10 +183,31 @@ class findSong(Resource):
 
         return {"200": "success"}
     
+class getTop10(Resource):
+    def get(self, term):
+        if term == "1m":
+            topArtist = sp.current_user_top_artists(limit=10, time_range="short_term")
+            topSong = sp.current_user_top_tracks(limit=10, time_range="short_term")
+
+            return {"artists": topArtist, "song": topSong}
+
+        elif term == "6m":
+            topArtist = sp.current_user_top_artists(limit=10, time_range="medium_term")
+            topSong = sp.current_user_top_tracks(limit=10, time_range="medium_term")
+
+            return {"artists": topArtist, "song": topSong}
+
+        elif term == "lifetime":
+            topArtist = sp.current_user_top_artists(limit=10, time_range="long_term")
+            topSong = sp.current_user_top_tracks(limit=10, time_range="long_term")
+
+            return {"artists": topArtist, "song": topSong}
+    
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
 api.add_resource(songtoDB, "/songToDB/")
 api.add_resource(findSong, "/findSong/")
+api.add_resource(getTop10, "/getTop/<string:term>/")
 
 @app.route("/")
 @app.route("/home")
