@@ -1,3 +1,12 @@
+/*
+COLORS:
+    red: #E63946 rgb(230, 57, 70)
+    cream: #F1FAEE rgb(105, 5, 98)
+    light blue: #A8DADC rgb(168, 218, 220)
+    blue: #457B9D rgb(69, 123, 157)
+    dark blue: #1D3557 rgb(29, 53, 87)
+*/
+
 button {
     background-color: #457B9D;
     color: #F1FAEE;
@@ -8,4 +17,29 @@ button {
     height: 50px;
     width: 20%;
     border-radius: 10px;
+}
+
+.active {
+    background-color: #1D3557;
+    border-color: #1D3557;
+}
+
+table {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.topTable {
+    width: 50%;
+    float: left;
+}
+
+@media screen and (max-width: 800px) {
+    .topTable {
+        float: none;
+        margin-top: 20px;
+        width: 100%;
+    }
 }

@@ -199,7 +199,10 @@ def song():
 
 @app.route("/recap")
 def recap():
-    return render_template("recap.html")
+    topArtist = sp.current_user_top_artists(limit=10, time_range="short_term")
+    topSong = sp.current_user_top_tracks(limit=10, time_range="short_term")
+
+    return render_template("recap.html", topArtist=topArtist, topSong=topSong)
 
 @app.route("/archive")
 def archive():

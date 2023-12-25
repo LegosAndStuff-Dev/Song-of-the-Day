@@ -37,12 +37,43 @@
     <!-- Main content -->
     <!-- Search bar for songs -->
     <div style="text-align: center; gap: 20px">
-        <button>1 Month</button>
+        <button class="active">1 Month</button>
         <button>6 Months</button>
         <button>Lifetime</button>
     </div>
-
+    <br>
     <!-- Testing area -->
+    <div style="align-items: center;">
+        <div class="topTable">
+            <table>
+                <tr>
+                    <th>Top 10 Artists</th>
+                </tr>
+                {% for artist in topArtist["items"] %}
+                <tr>
+                    <td>{{artist["name"]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="topTable">
+            <table>
+                <tr>
+                    <th>Top 10 Songs</th>
+                </tr>
+                {% for song in topSong["items"] %}
+                <tr>
+                    <td>{{song["name"]}} by 
+                        {% for artist in song["artists"] %}
+                            {{artist["name"]}}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
 </body>
 <script>
     // JavaScript functions for search and adding songs
