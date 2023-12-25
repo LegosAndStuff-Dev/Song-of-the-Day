@@ -37,9 +37,9 @@
     <!-- Main content -->
     <!-- Search bar for songs -->
     <div style="text-align: center; gap: 20px">
-        <button class="active">1 Month</button>
-        <button>6 Months</button>
-        <button>Lifetime</button>
+        <button id="1m" class="active" onclick="newTerm(this.id)">1 Month</button>
+        <button id="6m"onclick="newTerm(this.id)">6 Months</button>
+        <button id="lifetime" onclick="newTerm(this.id)">Lifetime</button>
     </div>
     <br>
     <!-- Testing area -->
@@ -76,6 +76,12 @@
 
 </body>
 <script>
-    // JavaScript functions for search and adding songs
+    function newTerm(id) {
+        console.log(id)
+        document.getElementById("1m").classList.remove("active")
+        document.getElementById("6m").classList.remove("active")
+        document.getElementById("lifetime").classList.remove("active")
+        document.getElementById(id).classList.add("active")
+    }
 </script>
 </html>
