@@ -94,9 +94,6 @@
                 <th>Top 10 Artists</th>
             </tr>`;
 
-            song = document.getElementById("song");
-            song.innerHTML = "";
-
             for (let i = 0; i < response["artists"]["items"].length; i++) {
                 artists.innerHTML += `
                 <tr>
@@ -104,6 +101,23 @@
                 </tr>
                 `
             }
+
+            song = document.getElementById("song");
+            song.innerHTML = `
+            <tr>
+                <th>Top 10 Songs</th>
+            </tr>
+            `
+            
+            for (let i = 0; i < response["song"]["items"].length; i++) {
+                console.log(i)
+                song.innerHTML += `
+                <tr>
+                    <td>${response["song"]["items"][i]["name"]} by ${response["song"]["items"][i]["artists"][0]["name"]}</td>
+                </tr>
+                `
+            }
+
         }) .catch(error => console.error(error)); 
     }
 </script>
