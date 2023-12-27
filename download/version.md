@@ -1,10 +1,10 @@
 # Version
-## Current Version: v0.5.0
-* Added Track ID to the song detail
-* Finished Archive.html
-* Removed unneed code
-* Updated database.py
-* Added Recap link at the top
+## Current Version: v0.5.1
+* Added Recap.html
+* Added 1 Month, 6 Months, Lifetime Buttons for recap
+* Added a new request endpoint
+* Added top 10 song and artists for each
+    * changes as times goes
 
 
 
@@ -36,3 +36,5 @@ v0.4.1: Added a success message when you add a song to the song of the day
 v0.4.2: Made Archive page, added function to get total number of calm, happy, ...
 <br>
 v0.4.3: Updated database, Added Icon, Added another request
+<br>
+v0.5.0: Added Track ID to detail, finished archive page, added recap page
