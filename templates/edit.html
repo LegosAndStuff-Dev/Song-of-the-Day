@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song of the Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <!--
+      COLORS:
+      red: #E63946 rgb(230, 57, 70)
+      cream: #F1FAEE rgb(105, 5, 98)
+      light blue: #A8DADC rgb(168, 218, 220)
+      blue: #457B9D rgb(69, 123, 157)
+      dark blue: #1D3557 rgb(29, 53, 87)
+    -->
+    <!-- Add your CSS link here for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <style>
+      /* Your CSS styles go here */
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <ul>
+        <li><img src="{{ url_for('static', filename='images/logo.png')}}" height="25" width="25" style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"></li>
+        <li><a href="/home">Home</a></li>
+        <li><a class="active" href="/archive">Archive</a></li>
+        <li><a href="/song">Add Song</a></li>
+        <li><a href="/recap">Recap</a></li>
+
+    </ul>
+    <h1 style="text-align: center;">Song of the Day</h1>
+
+    <!-- Main content -->
+    <!-- Search bar for songs -->
+
+    <!-- Testing area -->
+</body>
+<script>
+    // JavaScript functions for search and adding songs
+</script>
+</html>
