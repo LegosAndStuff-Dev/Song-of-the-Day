@@ -1,10 +1,10 @@
 # Version
-## Current Version: v0.5.1
-* Added Recap.html
-* Added 1 Month, 6 Months, Lifetime Buttons for recap
-* Added a new request endpoint
-* Added top 10 song and artists for each
-    * changes as times goes
+## Current Version: v0.5.2
+* Made a id.py page
+    * Make a random id for each song of the day
+    * Made random id generator
+* Added an id to the database
+* Imported id.py to main.py
 
 
 
@@ -38,3 +38,5 @@ v0.4.2: Made Archive page, added function to get total number of calm, happy, ..
 v0.4.3: Updated database, Added Icon, Added another request
 <br>
 v0.5.0: Added Track ID to detail, finished archive page, added recap page
+<br>
+v0.5.1: Finished recap page
