@@ -15,6 +15,7 @@
     -->
     <!-- Add your CSS link here for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
     <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
     <style>
@@ -62,7 +63,7 @@
 </body>
 <script>
     // JavaScript functions for search and adding songs
-
+    /*
     function searchSongs() {
         let x = document.getElementById("searchInput").value;
         fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
@@ -241,5 +242,6 @@
                 
         }) .catch(error => console.error(error)); 
     }
+    */
 </script>
 </html>
