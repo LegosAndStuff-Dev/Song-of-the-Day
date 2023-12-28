@@ -256,9 +256,9 @@ def archive():
 
     return render_template("archive.html", items=items, song=song, happy=happy, sad=sad, upbeat=upbeat, calm=calm)
 
-@app.route("/edit/<string:id>")
+@app.route("/archive/edit/<string:id>")
 def edit(id):
-    return f"{id}"
+    return render_template("edit.html")
 
 
 if __name__ == "__main__":
