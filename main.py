@@ -135,7 +135,9 @@ class songtoDB(Resource):
         month = datetime.datetime.now().strftime("%m")
         day = datetime.datetime.now().strftime(f"%d")
 
-        cursor.execute(f"""insert into SONG VALUES ('{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{artist}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
+        id = makeID(20, True, True, True)
+
+        cursor.execute(f"""insert into SONG VALUES ('{id}', '{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{artist}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
         
         conn.commit()
         conn.close()
@@ -241,7 +243,7 @@ def archive():
     none = str(items)
 
     if none == "[]":
-        items = f"No song in the {monthSpelled}!"
+        items = f"No songs in the {monthSpelled}!"
         song = False
 
     happy = getNumHappy(month)
