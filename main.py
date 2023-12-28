@@ -258,6 +258,13 @@ def archive():
 
 @app.route("/archive/edit/<string:id>")
 def edit(id):
+    conn = sqlite3.connect("static\database\song.sqlite")
+    cursor = conn.cursor()
+
+    cursor.execute(f"""SELECT * FROM SONG WHERE id='{id}'""")
+
+    items = cursor.fetchall()
+    print(items)
     return render_template("edit.html")
 
 
