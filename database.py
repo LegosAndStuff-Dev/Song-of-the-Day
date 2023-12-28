@@ -11,6 +11,7 @@ def makeTable():
 
         table = """
                 CREATE TABLE SONG (
+                    id TEXT,
                     date TEXT,
                     year INT,
                     month INT,
