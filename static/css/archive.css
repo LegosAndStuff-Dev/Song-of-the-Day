@@ -45,6 +45,15 @@ td {
     table-layout: fixed;
 }
 
+.edit button {
+    background-color: #E63946;
+    color: #F1FAEE;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 2.5px solid #E63946;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 800px) {
     table {
         width: 90%;
