@@ -68,12 +68,14 @@
               <th>Date</th>
               <th>Song Name</th>
               <th>Artist</th>
+              <th>Edit</th>
             </tr>
             {% for item in items %}
             <tr>
-              <td>{{item[2]}}/{{item[3]}}</td>
-              <td>{{item[4]}}</td>
+              <td>{{item[3]}}/{{item[4]}}</td>
               <td>{{item[5]}}</td>
+              <td>{{item[6]}}</td>
+              <td style="text-align: center;" class="edit"><a href="/edit/{{item[0]}}"><button>Edit</button></a></td>
             </tr>
             {% endfor %}
         </table>
