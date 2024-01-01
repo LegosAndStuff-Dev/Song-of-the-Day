@@ -263,9 +263,10 @@ def edit(id):
 
     cursor.execute(f"""SELECT * FROM SONG WHERE id='{id}'""")
 
-    items = cursor.fetchall()
+    items = cursor.fetchone()
     print(items)
-    return render_template("edit.html")
+    return render_template("edit.html", items=items)
+
 
 
 if __name__ == "__main__":
