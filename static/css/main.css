@@ -135,6 +135,11 @@ input[type="text"] {
     border: 2.5px solid #457B9D;
 }
 
+input[type="text"]:focus {
+    outline: none !important;
+    border: 2.5px solid #1D3557;
+}
+
 .search-bar button {
     position: relative;
     top: 7px;
