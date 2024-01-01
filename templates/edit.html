@@ -15,6 +15,7 @@
     -->
     <!-- Add your CSS link here for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/song.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
     <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
@@ -36,7 +37,60 @@
 
     <!-- Main content -->
     <!-- Search bar for songs -->
-
+    <div class="date">
+        <label for="date">Date:</label><br>
+        <input id="date" type="text" value="{{items[1]}}">
+    </div>
+    <br>
+    <h3 style="text-align: center;">Song Name: {{items[5]}}</h3>
+    <h4 style="text-align: center;">By: {{items[6]}}</h4>
+    <br>
+    <div id="songInfo" class="detail-button">
+        <ul id="happy-sad" class="detail-button">
+            <li class="left-detail">
+                {% if items[8] == 1 %}
+                <input type="radio" id="happy" name="hap-sad" checked/>
+                {% else %}
+                <input type="radio" id="happy" name="hap-sad"/>
+                {% endif %}
+                <label for="happy">Happy</label>
+            </li>
+            <li class="right-detail">
+                {% if items[9] == 1 %}
+                <input type="radio" id="sad" name="hap-sad" checked/>
+                {% else %}
+                <input type="radio" id="sad" name="hap-sad"/>
+                {% endif %}
+                <label for="sad">Sad</label>
+            </li>
+        </ul>
+        <br>
+        <ul id="upbeat-calm" class="detail-button">
+            <li class="left-detail">
+                {% if items[10] == 1 %}
+                <input type="radio" id="upbeat" name="upbeat-calm" checked/>
+                {% else %}
+                <input type="radio" id="upbeat" name="upbeat-calm"/>
+                {% endif %}
+                <label for="upbeat">Upbeat</label>
+            </li>
+            <li class="right-detail">
+                {% if items[11] == 1 %}
+                <input type="radio" id="calm" name="upbeat-calm" checked/>
+                {% else %}
+                <input type="radio" id="calm" name="upbeat-calm"/>
+                {% endif %}
+                <label for="calm">Calm/Slow</label>
+            </li>
+        </ul>
+    </div>
+    <br><br>
+    <div id="statusButtons" style="text-align: center;">
+        <button onclick="edit('delete')">Delete</button>
+        <button onclick="edit('save')">Save</button>
+        <a href="/archive"><button>Cancel</button></a>
+    </div>
+    <br><br><br>
     <!-- Testing area -->
 </body>
 <script>

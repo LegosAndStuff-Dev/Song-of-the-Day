@@ -1,0 +1,71 @@
+/*
+COLORS:
+red: #E63946 rgb(230, 57, 70)
+cream: #F1FAEE rgb(105, 5, 98)
+light blue: #A8DADC rgb(168, 218, 220)
+blue: #457B9D rgb(69, 123, 157)
+dark blue: #1D3557 rgb(29, 53, 87)
+*/
+
+
+button {
+    background-color: #457B9D;
+    color: #F1FAEE;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 2.5px solid #457B9D;
+    padding: 10px;
+    height: 50px;
+    width: 20%;
+    border-radius: 10px;
+    margin: 0px 8px;
+}
+
+.date {
+    text-align: center;
+}
+
+.date Label {
+    float: left;
+    background-color: #F1FAEE;
+    padding: 0px 5px;
+    position: relative;
+    top: 12px;
+    left: 35%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 10px 40px;
+}
+
+.one {
+    grid-row: 1;
+    grid-column: 1;
+    text-align: center;
+}
+
+.two {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
+}
+
+.three {
+    grid-row: 2;
+    grid-column: 1;
+    text-align: center;
+}
+
+.four {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 800px) {
+
+}
