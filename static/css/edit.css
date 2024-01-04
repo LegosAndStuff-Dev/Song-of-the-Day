@@ -67,5 +67,7 @@ button {
 
 
 @media screen and (max-width: 800px) {
-
+    .statusButtons button {
+        width: 27%;
+    }
 }
