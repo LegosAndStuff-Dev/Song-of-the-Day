@@ -65,6 +65,13 @@ button {
     text-align: center;
 }
 
+.heading {
+    text-align: center;
+    margin-bottom: 5px;
+    position: relative;
+    bottom: -10px;
+}
+
 
 @media screen and (max-width: 800px) {
     .statusButtons button {
