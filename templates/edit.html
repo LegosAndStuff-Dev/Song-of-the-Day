@@ -40,11 +40,11 @@
     <h2 class="heading">Song Details</h2>
     <div class="date">
         <label for="date">Song Name:</label><br>
-        <input id="date" type="text" value="{{items[5]}}">
+        <input id="songName" type="text" value="{{items[5]}}" disabled>
     </div>
     <div class="date">
         <label for="date">Artist:</label><br>
-        <input id="date" type="text" value="{{items[6]}}">
+        <input id="artist" type="text" value="{{items[6]}}" disabled>
     </div>
     <h2 class="heading">Date</h2>
     <div class="date">
@@ -94,8 +94,8 @@
     </div>
     <br><br>
     <div id="statusButtons" style="text-align: center;" class="statusButtons">
-        <button onclick="edit('delete')">Delete</button>
-        <button onclick="edit('save')">Save</button>
+        <button id="{{id}}" onclick="edit('delete', this.id)">Delete</button>
+        <button id="{{id}}" onclick="edit('save', this.id)">Save</button>
         <a href="/archive"><button>Cancel</button></a>
     </div>
     <br><br><br>
@@ -103,5 +103,26 @@
 </body>
 <script>
     // JavaScript functions for search and adding songs
+    function edit(type, id) {
+        date = document.getElementById("date").value;
+        
+        fetch('http://192.168.4.44:5000/edit/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {"id": id,
+                 "type": type,
+                 "date": date}
+                                )
+        })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)))
+        .then(response => {
+            document.getElementById("success").innerText = `You added "${songName}" successfully!`
+        })
+    }
 </script>
 </html>
