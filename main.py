@@ -206,8 +206,11 @@ class getTop10(Resource):
 
             return {"artists": topArtist, "song": topSong}
         
-class edit(Resource):
+class editClass(Resource):
     def post(self):
+        json_data = request.get_json(force=True)
+        print(json_data['id'], json_data["date"], json_data["type"])
+
         return {"200": "success"}
     
 api.add_resource(serachSong, "/search/<string:search>")
@@ -215,6 +218,7 @@ api.add_resource(detail, "/detail/<string:id>")
 api.add_resource(songtoDB, "/songToDB/")
 api.add_resource(findSong, "/findSong/")
 api.add_resource(getTop10, "/getTop/<string:term>/")
+api.add_resource(editClass, "/edit/")
 
 @app.route("/")
 @app.route("/home")
@@ -268,8 +272,7 @@ def edit(id):
     cursor.execute(f"""SELECT * FROM SONG WHERE id='{id}'""")
 
     items = cursor.fetchone()
-    print(items)
-    return render_template("edit.html", items=items)
+    return render_template("edit.html", items=items, id=id)
 
 
 
