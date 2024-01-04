@@ -205,6 +205,10 @@ class getTop10(Resource):
             topSong = sp.current_user_top_tracks(limit=10, time_range="long_term")
 
             return {"artists": topArtist, "song": topSong}
+        
+class edit(Resource):
+    def post(self):
+        return {"200": "success"}
     
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
