@@ -208,10 +208,67 @@ class getTop10(Resource):
         
 class editClass(Resource):
     def post(self):
-        json_data = request.get_json(force=True)
-        print(json_data['id'], json_data["date"], json_data["type"])
+        conn = sqlite3.connect("static\database\song.sqlite")
+        cursor = conn.cursor()
 
-        return {"200": "success"}
+        json_data = request.get_json(force=True)
+        print(json_data['id'], json_data["date"], json_data["type"], json_data["happy-sad"], json_data["calm-upbeat"])
+
+        if json_data["type"] == "save":
+            date = json_data['date']
+            date2 = date.split("-")
+            for i in range(len(date2)):
+                date2[i] = int(date2[i])
+
+            year = date2[0]
+            month = date2[1]
+            day = date2[2]
+
+            cursor.execute(f""" Update SONG SET year=({year}) WHERE id ="{json_data['id']}" """)
+            conn.commit()
+            
+            cursor.execute(f""" Update SONG SET month=({month}) WHERE id ="{json_data['id']}" """)
+            conn.commit()
+            
+            cursor.execute(f""" Update SONG SET day=({day}) WHERE id ="{json_data['id']}" """)
+            conn.commit()
+
+            print(date2)
+
+            cursor.execute(f""" Update SONG SET date="{date}" WHERE id="{json_data['id']}" """)
+            conn.commit()
+
+            if json_data["happy-sad"] == "happy":
+                cursor.execute(f""" Update SONG SET happy=1 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+                cursor.execute(f""" Update SONG SET sad=0 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+
+            if json_data["happy-sad"] == "sad":
+                cursor.execute(f""" Update SONG SET sad=1 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+                cursor.execute(f""" Update SONG SET happy=0 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+
+            if json_data["calm-upbeat"] == "calm":
+                cursor.execute(f""" Update SONG SET calm=1 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+                cursor.execute(f""" Update SONG SET upbeat=0 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+
+            if json_data["calm-upbeat"] == "upbeat":
+                cursor.execute(f""" Update SONG SET upbeat=1 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+                cursor.execute(f""" Update SONG SET calm=0 WHERE id ="{json_data['id']}" """)
+                conn.commit()
+
+        if json_data["type"] == "delete":
+            cursor.execute(f"""DELETE FROM SONG WHERE id="{json_data['id']}" """)
+            conn.commit()
+
+            
+
+        return {"200": "success", "type": json_data["type"]}
     
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
