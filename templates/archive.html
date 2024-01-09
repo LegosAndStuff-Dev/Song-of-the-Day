@@ -130,6 +130,7 @@
                     <th>Date</th>
                     <th>Song Name</th>
                     <th>Artist</th>
+                    <td>Edit</th>
                 </tr>
                 `
                 if (response["output"] == null) {
@@ -142,6 +143,7 @@
                         <td>${response["output"][i][3]}/${response["output"][i][4]}</td>
                         <td>${response["output"][i][5]}</td>
                         <td>${response["output"][i][6]}</td>
+                        <td style="text-align: center;" class="edit"><a href="/archive/edit/${response["output"][i][0]}"><button>Edit</button></a></td>
                     </tr>
                     `
                 }
@@ -173,6 +175,7 @@
                     <th>Date</th>
                     <th>Song Name</th>
                     <th>Artist</th>
+                    <th>edit</th>
                 </tr>
                 `
                 if (response["output"] == null) {
@@ -184,6 +187,7 @@
                         <td>${response["output"][i][3]}/${response["output"][i][4]}</td>
                         <td>${response["output"][i][5]}</td>
                         <td>${response["output"][i][6]}</td>
+                        <td style="text-align: center;" class="edit"><a href="/archive/edit/${response["output"][i][0]}"><button>Edit</button></a></td>
                     </tr>
                     `
                 }
