@@ -301,7 +301,7 @@ def archive():
     month = datetime.datetime.now().strftime("%m")
     monthSpelled = datetime.datetime.now().strftime("%B")
 
-    cursor.execute(f"SELECT * FROM SONG WHERE month='{month}'")
+    cursor.execute(f"SELECT * FROM SONG WHERE month='{month}' ORDER BY day ASC")
 
     items = cursor.fetchall()
     song = True
