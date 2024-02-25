@@ -34,6 +34,11 @@ cursor = conn.cursor()
 
 class serachSong(Resource):
     def get(self, search):
+        token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+        if token:
+            sp = spotipy.Spotify(auth=token)
+
         search = sp.search(q=search, type="track", limit=6)
         json_object = json.dumps(search, indent=4)
  
@@ -45,6 +50,11 @@ class serachSong(Resource):
 class detail(Resource):
     def get(self, id):
         print(id)
+        token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+        if token:
+            sp = spotipy.Spotify(auth=token)
+
         track = sp.track(id)
         songName = track["name"]
         artist = track["artists"][0]["name"]
@@ -91,6 +101,10 @@ class detail(Resource):
     
 class songtoDB(Resource):
     def post(self):
+        token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+        if token:
+            sp = spotipy.Spotify(auth=token)
 
         conn = sqlite3.connect("static\database\song.sqlite")
         cursor = conn.cursor()
@@ -195,6 +209,11 @@ class findSong(Resource):
     
 class getTop10(Resource):
     def get(self, term):
+        token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+        if token:
+            sp = spotipy.Spotify(auth=token)
+
         if term == "1m":
             topArtist = sp.current_user_top_artists(limit=10, time_range="short_term")
             topSong = sp.current_user_top_tracks(limit=10, time_range="short_term")
