@@ -136,8 +136,9 @@ class songtoDB(Resource):
         day = datetime.datetime.now().strftime(f"%d")
 
         id = makeID(20, True, True, True)
-
-        cursor.execute(f"""insert into SONG VALUES ('{id}', '{year}-{month}-{day}', {year}, {month}, {day}, '{songName}', '{artist}', '{trackID}', {happy}, {sad}, {upbeat}, {calm})""")
+        print(id)
+        #its the special characters making the issue
+        cursor.execute(f"""insert into SONG VALUES ('{id}', '{year}-{month}-{day}', {year}, {month}, {day}, "{songName}", "{artist}", '{trackID}', 1, 0, 1, 0)""")
         
         conn.commit()
         conn.close()
