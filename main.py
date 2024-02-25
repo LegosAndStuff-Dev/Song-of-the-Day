@@ -92,7 +92,7 @@ class detail(Resource):
 class songtoDB(Resource):
     def post(self):
 
-        conn = sqlite3.connect("static\database\song.sqlite", check_same_thread=False)
+        conn = sqlite3.connect("static\database\song.sqlite")
         cursor = conn.cursor()
 
         json_data = request.get_json(force=True)
@@ -157,9 +157,9 @@ class findSong(Resource):
             if '-' in str(search):
                 print("test")
                 print(search)
-                cursor.execute(f"SELECT * FROM SONG WHERE date='{search}'")
+                cursor.execute(f"SELECT * FROM SONG WHERE date='{search}' ORDER BY day ASC")
             else: 
-                cursor.execute(f"SELECT * FROM SONG WHERE month={search}")
+                cursor.execute(f"SELECT * FROM SONG WHERE month={search} ORDER BY day ASC")
 
             items = cursor.fetchall()
             print(items)
@@ -174,7 +174,7 @@ class findSong(Resource):
                         "output": items}
 
         if type == "song":
-            cursor.execute(f"SELECT * FROM SONG WHERE songNAME LIKE '{search}'")
+            cursor.execute(f"SELECT * FROM SONG WHERE songNAME LIKE '{search}' ORDER BY day ASC")
 
             items = cursor.fetchall()
             none = str(items)
