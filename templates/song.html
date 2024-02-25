@@ -226,6 +226,7 @@
         calm_up = document.querySelectorAll(`input[name="upbeat-calm"]:checked`)
         
         songName = document.getElementById("songName").innerHTML;
+        console.log(trackID, songName, happy_sad[0].id, calm_up[0].id)
 
         fetch('http://192.168.4.44:5000/songToDB/', {
             method: 'POST',

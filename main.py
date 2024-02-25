@@ -154,9 +154,15 @@ class findSong(Resource):
         search = json_data['search']
 
         if type == "date":
-            cursor.execute(f"SELECT * FROM SONG WHERE date='{search}'")
+            if '-' in str(search):
+                print("test")
+                print(search)
+                cursor.execute(f"SELECT * FROM SONG WHERE date='{search}'")
+            else: 
+                cursor.execute(f"SELECT * FROM SONG WHERE month={search}")
 
             items = cursor.fetchall()
+            print(items)
             none = str(items)
 
             if none == "[]":
