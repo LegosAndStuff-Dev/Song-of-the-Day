@@ -314,6 +314,11 @@ def song():
 
 @app.route("/recap")
 def recap():
+    token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+    if token:
+        sp = spotipy.Spotify(auth=token)
+
     topArtist = sp.current_user_top_artists(limit=10, time_range="short_term")
     topSong = sp.current_user_top_tracks(limit=10, time_range="short_term")
 
