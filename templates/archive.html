@@ -58,7 +58,10 @@
     <!-- Testing area -->
     {% if song  == False: %}
     <br>
-    <p style="text-align: center;">{{items}}</p>
+    <p style="text-align: center;" id="notice">{{items}}</p>
+    <p style="text-align: center; display: none;" id="noSong">No Songs Available</p>
+    <table style="display: none;" class="detail" id="detailSong"></table>
+    <table style="display: none;" id="songTable"></table>
     {% elif song == True: %}
     <br>
     <p style="text-align: center; display: none;" id="noSong">No Songs Available</p>
@@ -123,7 +126,9 @@
             .then(response => {
                 document.getElementById("noSong").style = "display: none;"
                 document.getElementById("detailSong").style = "display: none;";
+                document.getElementById("notice").style = "display: none;"
                 table = document.getElementById("songTable");
+                table.style = "displau: block;"
                 table.innerHTML = ""
                 table.innerHTML = `
                 <tr>
@@ -154,7 +159,7 @@
         }
 
         if (type == "song") {
-            fetch('http://192.168.4.44:5000/findSong/', {
+            fetch('http://192.168.4.88:5000/findSong/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
