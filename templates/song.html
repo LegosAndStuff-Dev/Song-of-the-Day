@@ -88,111 +88,224 @@
 
     function searchSongs() {
         let x = document.getElementById("searchInput").value;
-        fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
-            document.getElementById("searchResults").textContent = "";
-            console.log(data)
-            i = 1
 
-            songData = []
+        if (x.includes("ID123") == true) {
+            console.log(x)
+            x = x.replace(" ID123", "");
 
-            for (let i = 0; i < data["tracks"]["items"].length; i ++) {
-                name = data["tracks"]["items"][i]["name"];
-                //Goal: to get all the artists or 2 of them and show them and not just one without the screen getting all messed up
-                artist = data["tracks"]["items"][i]["artists"][0]["name"];
+            fetch('http://192.168.4.44:5000/id/search/' + x) .then(response => response.json()) .then(data => {
+                document.getElementById("searchResults").textContent = "";
+                console.log(data)
+                i = 1
 
-                if (data["tracks"]["items"][i]["artists"].length > 1) {
-                    artist = ""
-                    for (let s = 0; s < data["tracks"]["items"][i]["artists"].length; s ++) {
-                        artist += `${data["tracks"]["items"][i]["artists"][s]["name"]}, `;
+                songData = []
+
+                for (let i = 0; i < 1; i ++) {
+                    name = data["name"];
+                    //Goal: to get all the artists or 2 of them and show them and not just one without the screen getting all messed up
+                    artist = data["artists"][0]["name"];
+
+                    if (data["artists"].length > 1) {
+                        artist = ""
+                        for (let s = 0; s < data["artists"].length; s ++) {
+                            artist += `${data["artists"][s]["name"]}, `;
+                        }
+                        length = artist.length
+                        artist = artist.slice(0, (length-2));
                     }
-                    length = artist.length
-                    artist = artist.slice(0, (length-2));
+
+                    image_pic = data["album"]["images"][0]["url"];
+                    track_id = data["id"];
+
+                    console.log(track_id)
+
+                    x = {"name": name,
+                        "artist": artist,
+                        "art": image_pic,
+                        "id": track_id}
+
+                    songData[i] = x
                 }
+            
+                for (let i = 0; i < 1; i ++) {
+                    name = songData[i]["name"]
+                    artist= songData[i]["artist"]
+                    image_pic = songData[i]["art"]
+                    track_id = songData[i]["id"]
 
-                image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
-                track_id = data["tracks"]["items"][i]["id"];
+                    item = document.createElement("div");
+                    item.id = "item" + i;
+                    item.classList.add("item")
 
-                console.log(track_id)
+                    image = document.createElement("div");
+                    image.id = "image" + i;
 
-                x = {"name": name,
-                    "artist": artist,
-                    "art": image_pic,
-                    "id": track_id}
+                    data = document.createElement("div");
+                    data.id = "data" + i;
+                    data.classList.add("data")
 
-                songData[i] = x
-            }
-        
-            for (let i = 0; i < 6; i ++) {
-                name = songData[i]["name"]
-                artist= songData[i]["artist"]
-                image_pic = songData[i]["art"]
-                track_id = songData[i]["id"]
+                    img = document.createElement('img');
+                    img.src = image_pic; img.height = "75"; img.width = "75";
 
-                item = document.createElement("div");
-                item.id = "item" + i;
-                item.classList.add("item")
+                    songName = document.createElement("h3");
+                    songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px"; songName.id = "name" + i
 
-                image = document.createElement("div");
-                image.id = "image" + i;
-
-                data = document.createElement("div");
-                data.id = "data" + i;
-                data.classList.add("data")
-
-                img = document.createElement('img');
-                img.src = image_pic; img.height = "75"; img.width = "75";
-
-                songName = document.createElement("h3");
-                songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px"; songName.id = "name" + i
-
-                if (name.length > 25) {
-                    name = name.slice(0, 25)
-                    name += "..."
-                    songName.textContent = name
-                }
-
-                if (window.innerWidth < 500) {
-                    if (name.length > 12) {
-                        name = name.slice(0, 12)
+                    if (name.length > 25) {
+                        name = name.slice(0, 25)
                         name += "..."
                         songName.textContent = name
                     }
+
+                    if (window.innerWidth < 500) {
+                        if (name.length > 12) {
+                            name = name.slice(0, 12)
+                            name += "..."
+                            songName.textContent = name
+                        }
+                    }
+
+                    songBy = document.createElement("p");
+                    songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
+
+                    select_group = document.createElement("div")
+                    select_group.classList.add("select"); select_group.id = "button-group" + i;
+
+                    button_art1 = document.createElement("img")
+                    button_art1.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art1.width = "19"; button_art1.height = "19";
+
+                    button_art2 = document.createElement("img")
+                    button_art2.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art2.width = "19"; button_art2.height = "19";
+
+
+                    document.getElementById("searchResults").appendChild(item)
+                    document.getElementById("item" + i).appendChild(image)
+                    document.getElementById("item" + i).appendChild(data)
+
+                    document.getElementById('image' + i).appendChild(img);
+
+                    document.getElementById("data" + i).appendChild(songName);
+                    document.getElementById("data" + i).appendChild(songBy);
+
+                    data.innerHTML += `<button id='${track_id}5611${i}' onclick='addSong(this.id)' class='select-button select-small'></button>`;
+                    
+                    document.getElementById("item" + i).appendChild(select_group);
+
+                    //document.getElementById("button-group" + i).appendChild(detail);
+
+                    select_group.innerHTML += `<button id='${track_id}5612${i}' onclick='addSong(this.id)' class='select-button select-large'></button>`;
+
+                    document.getElementById(track_id + `5611${i}`).appendChild(button_art1);
+                    document.getElementById(track_id + `5612${i}`).appendChild(button_art2);
                 }
+            }) .catch(error => console.error(error)); 
+        }
+        else {
+            fetch('http://192.168.4.44:5000/search/' + x) .then(response => response.json()) .then(data => {
+                document.getElementById("searchResults").textContent = "";
+                console.log(data)
+                i = 1
 
-                songBy = document.createElement("p");
-                songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
+                songData = []
 
-                select_group = document.createElement("div")
-                select_group.classList.add("select"); select_group.id = "button-group" + i;
+                for (let i = 0; i < data["tracks"]["items"].length; i ++) {
+                    name = data["tracks"]["items"][i]["name"];
+                    //Goal: to get all the artists or 2 of them and show them and not just one without the screen getting all messed up
+                    artist = data["tracks"]["items"][i]["artists"][0]["name"];
 
-                button_art1 = document.createElement("img")
-                button_art1.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art1.width = "19"; button_art1.height = "19";
+                    if (data["tracks"]["items"][i]["artists"].length > 1) {
+                        artist = ""
+                        for (let s = 0; s < data["tracks"]["items"][i]["artists"].length; s ++) {
+                            artist += `${data["tracks"]["items"][i]["artists"][s]["name"]}, `;
+                        }
+                        length = artist.length
+                        artist = artist.slice(0, (length-2));
+                    }
 
-                button_art2 = document.createElement("img")
-                button_art2.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art2.width = "19"; button_art2.height = "19";
+                    image_pic = data["tracks"]["items"][i]["album"]["images"][0]["url"];
+                    track_id = data["tracks"]["items"][i]["id"];
+
+                    console.log(track_id)
+
+                    x = {"name": name,
+                        "artist": artist,
+                        "art": image_pic,
+                        "id": track_id}
+
+                    songData[i] = x
+                }
+            
+                for (let i = 0; i < 6; i ++) {
+                    name = songData[i]["name"]
+                    artist= songData[i]["artist"]
+                    image_pic = songData[i]["art"]
+                    track_id = songData[i]["id"]
+
+                    item = document.createElement("div");
+                    item.id = "item" + i;
+                    item.classList.add("item")
+
+                    image = document.createElement("div");
+                    image.id = "image" + i;
+
+                    data = document.createElement("div");
+                    data.id = "data" + i;
+                    data.classList.add("data")
+
+                    img = document.createElement('img');
+                    img.src = image_pic; img.height = "75"; img.width = "75";
+
+                    songName = document.createElement("h3");
+                    songName.textContent = name; songName.style = "font-size: 20px; margin: 0px; height: 25px"; songName.id = "name" + i
+
+                    if (name.length > 25) {
+                        name = name.slice(0, 25)
+                        name += "..."
+                        songName.textContent = name
+                    }
+
+                    if (window.innerWidth < 500) {
+                        if (name.length > 12) {
+                            name = name.slice(0, 12)
+                            name += "..."
+                            songName.textContent = name
+                        }
+                    }
+
+                    songBy = document.createElement("p");
+                    songBy.textContent = "By: " + artist; songBy.style = "margin: 0px; font-size: 10px;"
+
+                    select_group = document.createElement("div")
+                    select_group.classList.add("select"); select_group.id = "button-group" + i;
+
+                    button_art1 = document.createElement("img")
+                    button_art1.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art1.width = "19"; button_art1.height = "19";
+
+                    button_art2 = document.createElement("img")
+                    button_art2.src = "{{ url_for('static', filename='/images/select.png') }}"; button_art2.width = "19"; button_art2.height = "19";
 
 
-                document.getElementById("searchResults").appendChild(item)
-                document.getElementById("item" + i).appendChild(image)
-                document.getElementById("item" + i).appendChild(data)
+                    document.getElementById("searchResults").appendChild(item)
+                    document.getElementById("item" + i).appendChild(image)
+                    document.getElementById("item" + i).appendChild(data)
 
-                document.getElementById('image' + i).appendChild(img);
+                    document.getElementById('image' + i).appendChild(img);
 
-                document.getElementById("data" + i).appendChild(songName);
-                document.getElementById("data" + i).appendChild(songBy);
+                    document.getElementById("data" + i).appendChild(songName);
+                    document.getElementById("data" + i).appendChild(songBy);
 
-                data.innerHTML += `<button id='${track_id}1${i}' onclick='addSong(this.id)' class='select-button select-small'></button>`;
-                
-                document.getElementById("item" + i).appendChild(select_group);
+                    data.innerHTML += `<button id='${track_id}1${i}' onclick='addSong(this.id)' class='select-button select-small'></button>`;
+                    
+                    document.getElementById("item" + i).appendChild(select_group);
 
-                //document.getElementById("button-group" + i).appendChild(detail);
+                    //document.getElementById("button-group" + i).appendChild(detail);
 
-                select_group.innerHTML += `<button id='${track_id}2${i}' onclick='addSong(this.id)' class='select-button select-large'></button>`;
+                    select_group.innerHTML += `<button id='${track_id}2${i}' onclick='addSong(this.id)' class='select-button select-large'></button>`;
 
-                document.getElementById(track_id + `1${i}`).appendChild(button_art1);
-                document.getElementById(track_id + `2${i}`).appendChild(button_art2);
-            }
-        }) .catch(error => console.error(error)); 
+                    document.getElementById(track_id + `1${i}`).appendChild(button_art1);
+                    document.getElementById(track_id + `2${i}`).appendChild(button_art2);
+                }
+            }) .catch(error => console.error(error)); 
+        }
     }
 
     function addSong(songID) {
@@ -208,17 +321,29 @@
 
         console.log(items);
 
-        for (let i = 0; i < items.length; i ++) {
-            document.getElementById(`item${items[i]}`).style = "display: none;";
+        if (songID.includes("5612") == true || songID.includes("5611") == true) {
+            document.getElementById(`${trackID}1${id}`).style = "display: none;";
+            document.getElementById(`${trackID}2${id}`).style = "display: none;";
+            document.getElementById("songInfo").style = "display: block;";
+            document.getElementById("addSongButton").style = "text-align: center; display: block";
+
+            document.getElementById("addSongButton").innerHTML = `<button class="addSongButton" id="${trackID}" onclick="songToDB(this.id)">Add Song of the Day</button>`
+
+            document.getElementById("name" + id).id = "songName";
         }
-        document.getElementById(`${trackID}1${id}`).style = "display: none;";
-        document.getElementById(`${trackID}2${id}`).style = "display: none;";
-        document.getElementById("songInfo").style = "display: block;";
-        document.getElementById("addSongButton").style = "text-align: center; display: block";
+        else {
+            for (let i = 0; i < items.length; i ++) {
+                document.getElementById(`item${items[i]}`).style = "display: none;";
+            }
+            document.getElementById(`${trackID}1${id}`).style = "display: none;";
+            document.getElementById(`${trackID}2${id}`).style = "display: none;";
+            document.getElementById("songInfo").style = "display: block;";
+            document.getElementById("addSongButton").style = "text-align: center; display: block";
 
-        document.getElementById("addSongButton").innerHTML = `<button class="addSongButton" id="${trackID}" onclick="songToDB(this.id)">Add Song of the Day</button>`
+            document.getElementById("addSongButton").innerHTML = `<button class="addSongButton" id="${trackID}" onclick="songToDB(this.id)">Add Song of the Day</button>`
 
-        document.getElementById("name" + id).id = "songName";
+            document.getElementById("name" + id).id = "songName";
+        }
     }
 
     function songToDB(trackID) {
@@ -226,6 +351,10 @@
         calm_up = document.querySelectorAll(`input[name="upbeat-calm"]:checked`)
         
         songName = document.getElementById("songName").innerHTML;
+        if (trackID.includes("561") == true) {
+            trackID = trackID.replace("561", "")
+        }
+        
         console.log(trackID, songName, happy_sad[0].id, calm_up[0].id)
 
         fetch('http://192.168.4.44:5000/songToDB/', {

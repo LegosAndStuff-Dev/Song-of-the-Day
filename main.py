@@ -296,12 +296,26 @@ class editClass(Resource):
 
         return {"200": "success", "type": json_data["type"]}
     
+class searchID(Resource):
+    def get(self, id):
+        token = util.prompt_for_user_token(USERNAME,scope=SCOPE,client_id=CLIENT_ID,client_secret=SECRET, redirect_uri=REDIRECT_URI)
+
+        if token:
+            sp = spotipy.Spotify(auth=token)
+
+        track = sp.track(id)
+
+        print(track)
+        return track
+        
+    
 api.add_resource(serachSong, "/search/<string:search>")
 api.add_resource(detail, "/detail/<string:id>")
 api.add_resource(songtoDB, "/songToDB/")
 api.add_resource(findSong, "/findSong/")
 api.add_resource(getTop10, "/getTop/<string:term>/")
 api.add_resource(editClass, "/edit/")
+api.add_resource(searchID, "/id/search/<string:id>")
 
 @app.route("/")
 @app.route("/home")
