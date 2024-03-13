@@ -1,10 +1,7 @@
 # Version
-## Current Version: v0.5.2
-* Made a id.py page
-    * Make a random id for each song of the day
-    * Made random id generator
-* Added an id to the database
-* Imported id.py to main.py
+## Current Version: v1.0.0
+* Finished off the site
+* Added an id search for when adding song of the day
 
 
 
@@ -40,3 +37,5 @@ v0.4.3: Updated database, Added Icon, Added another request
 v0.5.0: Added Track ID to detail, finished archive page, added recap page
 <br>
 v0.5.1: Finished recap page
+<br>
+v1.0.0: Site is fully working and has all the functions
