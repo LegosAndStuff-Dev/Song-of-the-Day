@@ -376,6 +376,10 @@ def edit(id):
     items = cursor.fetchone()
     return render_template("edit.html", items=items, id=id)
 
+@app.route("/archive/year")
+def song():
+    pass
+
 
 
 if __name__ == "__main__":
