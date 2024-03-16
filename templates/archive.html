@@ -64,6 +64,7 @@
     <table style="display: none;" id="songTable"></table>
     {% elif song == True: %}
     <br>
+    <p style="display: none" id="notice"></p>
     <p style="text-align: center; display: none;" id="noSong">No Songs Available</p>
     <div class="result-song" id="divSong">
         <table id="songTable">
@@ -128,7 +129,7 @@
                 document.getElementById("detailSong").style = "display: none;";
                 document.getElementById("notice").style = "display: none;"
                 table = document.getElementById("songTable");
-                table.style = "displau: block;"
+                table.style = "display: block;"
                 table.innerHTML = ""
                 table.innerHTML = `
                 <tr>
