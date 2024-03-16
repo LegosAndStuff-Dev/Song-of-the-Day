@@ -69,10 +69,10 @@
     <div class="result-song" id="divSong">
         <table id="songTable">
             <tr>
-              <th>Date</th>
-              <th>Song Name</th>
-              <th>Artist</th>
-              <th>Edit</th>
+              <th class="thDate" >Date</th>
+              <th class="thName" >Song Name</th>
+              <th class="thArtist" >Artist</th>
+              <th class="thEdit" >Edit</th>
             </tr>
             {% for item in items %}
             <tr>
@@ -133,10 +133,10 @@
                 table.innerHTML = ""
                 table.innerHTML = `
                 <tr>
-                    <th>Date</th>
-                    <th>Song Name</th>
-                    <th>Artist</th>
-                    <td>Edit</th>
+                    <th class="thDate" >Date</th>
+                    <th class="thName" >Song Name</th>
+                    <th class="thArtist" >Artist</th>
+                    <th class="thEdit" >Edit</th>
                 </tr>
                 `
 
@@ -160,7 +160,7 @@
         }
 
         if (type == "song") {
-            fetch('http://192.168.4.88:5000/findSong/', {
+            fetch('http://192.168.4.44:5000/findSong/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

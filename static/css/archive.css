@@ -35,7 +35,26 @@ table {
 
 table, th, td {
     border: 1px solid #457B9D;
+
+    
 }
+
+.thDate {
+    width: 10%
+}
+
+.thName {
+    width: 47%;
+}
+
+.thArtist {
+    width: 33%;
+}
+
+.thEdit {
+    width: 10%;
+}
+
 
 td {
     padding: 5px;
